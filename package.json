@@ -4,9 +4,12 @@
   "version": "1.0.0",
   "author": "Alexey Stsefanovich",
   "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": "8.9.1"
+  },
   "dependencies": {
-    "node-static": "^0.7.10",
-    "webslides": "^1.4.2"
+    "node-static": "^0.7.10"
   },
   "devDependencies": {
     "browser-sync": "^2.23.6",
@@ -22,8 +25,13 @@
     "merge-stream": "^1.0.1"
   },
   "scripts": {
+    "start": "node index.js",
     "run": "npm run build && node index.js",
     "build": "gulp",
     "develop": "gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ala-n/dom-api-learn"
   }
 }
