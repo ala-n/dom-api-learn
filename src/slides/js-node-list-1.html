@@ -2,8 +2,8 @@
 	<div class="wrap">
 		<h2><strong>Немного о коллекциях NodeList</strong></h2>
 		<p class="text-context">
-			Как уже было замечено в тех случаях когда результатом может являтся более одного элемента возвращается коллекция элеменнтов <a href="https://developer.mozilla.org/ru/docs/Web/API/NodeList">NodeList</a>.
-			NodeList это псевдо-массив и не содержит в цепочке прототипов прототип Array.prototype поэтому
+			Как уже было замечено, в тех случаях, когда результатом может являтся более одного элемента, возвращается коллекция элеменнтов <a href="https://developer.mozilla.org/ru/docs/Web/API/NodeList">NodeList</a>.
+			NodeList это псевдо-массив и не содержит в цепочке прототипов прототип Array.prototype, поэтому
 			<span style="color: red; font-weight: bold">не получится напрямую вызывать методы массивов на объектах NodeList</span>.
 		</p>
 		<include src="./code-fragments/js-node-list-wrong.html"></include>

@@ -76,10 +76,10 @@
     <div class="wrap">
         <h2><strong>JavaScript</strong></h2>
         <p class="text-context no-margin">Ядро JavaScript расширяется для различных целей путем добавления в него новых
-            объектов определяющих API для взаимодействия с внешним миром, например:</p>
+            объектов, определяющих API для взаимодействия с внешним миром, например:</p>
         <ul>
             <li>JavaScript на стороне клиента расширяет ядро языка, предоставляя объекты для контроля браузера (Browser
-                Object Model (BOM)) а также непосредственно Document Object Model (DOM), о которых мы поговорим далее.
+                Object Model (BOM)), а также непосредственно Document Object Model (DOM), о которых мы поговорим далее.
             </li>
             <li>JavaScript на стороне сервера расширяет ядро языка, предоставляя объекты обращения к файловой системе,
                 обмена информацией по протоколу HTTP и т.п.
@@ -114,7 +114,7 @@
                 <pre class="code html5" style="font-family:monospace;">
 <span style="color: #009900;">&lt;<span class="code-tag">html</span>&gt;</span>
   <span style="color: #009900;">&lt;<span class="code-tag">head</span>&gt;</span>
-     <span style="color: #009900;">&lt;<span class="code-tag">title</span>&gt;</span>Пример дкумента<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">title</span>&gt;</span>
+     <span style="color: #009900;">&lt;<span class="code-tag">title</span>&gt;</span>Пример документа<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">title</span>&gt;</span>
   <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">head</span>&gt;</span>
   <span style="color: #009900;">&lt;<span class="code-tag">body</span>&gt;</span>
      <span style="color: #009900;">&lt;<span class="code-tag">h1</span>&gt;</span>Это HTML-документ<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">h1</span>&gt;</span>
@@ -425,31 +425,31 @@
 	<div class="wrap">
 		<h2><strong>Немного о коллекциях NodeList</strong></h2>
 		<p class="text-context">
-			Как уже было замечено в тех случаях когда результатом может являтся более одного элемента возвращается коллекция элеменнтов <a href="https://developer.mozilla.org/ru/docs/Web/API/NodeList">NodeList</a>.
-			NodeList это псевдо-массив и не содержит в цепочке прототипов прототип Array.prototype поэтому
+			Как уже было замечено, в тех случаях, когда результатом может являтся более одного элемента, возвращается коллекция элеменнтов <a href="https://developer.mozilla.org/ru/docs/Web/API/NodeList">NodeList</a>.
+			NodeList это псевдо-массив и не содержит в цепочке прототипов прототип Array.prototype, поэтому
 			<span style="color: red; font-weight: bold">не получится напрямую вызывать методы массивов на объектах NodeList</span>.
 		</p>
-		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> nods<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> nodes<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 &nbsp;
-<span style="color: #000066; font-weight: bold;">for</span><span style="color: #009900;">&#40;</span>let i<span style="color: #339933;">=</span><span style="color: #CC0000;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> nods.<span style="color: #660066;">length</span><span style="color: #339933;">;</span> <span style="color: #339933;">++</span>i<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-    let node <span style="color: #339933;">=</span> nods<span style="color: #009900;">&#91;</span>i<span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+<span style="color: #000066; font-weight: bold;">for</span><span style="color: #009900;">&#40;</span>let i<span style="color: #339933;">=</span><span style="color: #CC0000;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> nodes.<span style="color: #660066;">length</span><span style="color: #339933;">;</span> <span style="color: #339933;">++</span>i<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    let node <span style="color: #339933;">=</span> nodes<span style="color: #009900;">&#91;</span>i<span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
     <span style="color: #006600; font-style: italic;">// ...</span>
 <span style="color: #009900;">&#125;</span>
 &nbsp;
-nods.<span style="color: #660066;">forEach</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: red; font-style: italic;">// TypeError: nods.forEach is not a function</span></pre>
+nodes.<span style="color: #660066;">forEach</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: red; font-style: italic;">// TypeError: nodes.forEach is not a function</span></pre>
 	</div>
 </section>
         <section>
     <div class="wrap">
         <h2><strong>Вызов методов Array на псевдо-массивах</strong></h2>
         <p class="text-context">
-            Выход есть и возможен он благодаря функциям call и apply из Function.prototype. Мы можем вызывать функции прототипа Array в контексте объектов NodeList. Также бывает удобным и преобразовавать NodeList в Array при помощи все того же способа - вызова в контексте.
+            Выход есть, и возможен он благодаря функциям call и apply из Function.prototype. Мы можем вызывать функции прототипа Array в контексте объектов NodeList. Также бывает удобным и преобразовавать NodeList в Array при помощи все того же способа - вызова в контексте и метода <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank">slice</a>[Array.prototype].
         </p>
-        <pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> nods<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<span style="">Array</span>.<span style="color: #000066; font-weight: bold;">prototype</span>.<span style="color: #660066;">call</span><span style="color: #009900;">&#40;</span>nods<span style="color: #339933;">,</span> <span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+        <pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> nodes<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="">Array</span>.<span style="color: #000066; font-weight: bold;">prototype</span>.<span style="color: #660066;">call</span><span style="color: #009900;">&#40;</span>nodes<span style="color: #339933;">,</span> <span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 &nbsp;
-<span style="color: #000066; font-weight: bold;">var</span> nodsArray <span style="color: #339933;">=</span> <span style="">Array</span>.<span style="color: #000066; font-weight: bold;">prototype</span>.<span style="color: #660066;">slice</span>.<span style="color: #660066;">call</span><span style="color: #009900;">&#40;</span>nods<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// convert NodeList to Array</span>
-nodsArray.<span style="color: #660066;">forEach</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+<span style="color: #000066; font-weight: bold;">var</span> nodesArray <span style="color: #339933;">=</span> <span style="">Array</span>.<span style="color: #000066; font-weight: bold;">prototype</span>.<span style="color: #660066;">slice</span>.<span style="color: #660066;">call</span><span style="color: #009900;">&#40;</span>nodes<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// convert NodeList to Array</span>
+nodesArray.<span style="color: #660066;">forEach</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
         <br/>
         <pre class="note">Такой "трюк" можно использовать и на других псевдо-массивах, например на <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/arguments">arguments</a>.</pre>
     </div>
@@ -469,11 +469,11 @@ nodsArray.<span style="color: #660066;">forEach</span><span style="color: #00990
         <section>
 	<div class="wrap">
 		<h2><strong>Доступ к окружению элемнтов страницы</strong></h2>
-		<p>
+		<p class="text-context">
 			Помимо описанных ранее методов для получения произвольного элемента в дереве сам интерфейс (прототип)
 			<a href="https://developer.mozilla.org/ru/docs/Web/API/Node" target="_blank">Node</a> содержит динамические ссылки на все "окружение" узла дерева:
 			родительский элемент (parentNode), коллекцию дочерних элементов (childNodes), ссылки на первый/последний дочерний элемент (firstChild/lastChild), ссылки на соседей в родительском элементе (previousSibling / nextSibling).
-			Визуально можно просмотреть доступные связи узла на следующей <a href="#slide=20">схеме</a>.
+			Визуально можно просмотреть доступные связи узла на следующей <a href="#slide=21">схеме</a>.
 		</p>
 	</div>
 </section>
@@ -559,13 +559,13 @@ nodsArray.<span style="color: #660066;">forEach</span><span style="color: #00990
 	<div class="wrap">
 		<h2><strong>Создание элемента</strong></h2>
 		<p class="text-context">
-			Для того чтобы создать новый элемент не привязанный к дереву используется метод <a href="https://developer.mozilla.org/ru/docs/DOM/document.createElement" target="_blank">createElement</a> [Document.prototype].
+			Для того, чтобы создать новый элемент, не привязанный к дереву, используется метод <a href="https://developer.mozilla.org/ru/docs/DOM/document.createElement" target="_blank">createElement</a> [Document.prototype].
 		</p>
 		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> newDiv <span style="color: #339933;">=</span> document.<span style="color: #660066;">createElement</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
 		<br/>
 		<h2><strong>Клонирование элемента</strong></h2>
 		<p class="text-context">
-			Для того чтобы создать копию существуюего узла используется метод <a href="https://developer.mozilla.org/ru/docs/Web/API/Node/cloneNode" target="_blank">cloneNode</a> [Node.prototype].
+			Для того, чтобы создать копию существуюего узла, используется метод <a href="https://developer.mozilla.org/ru/docs/Web/API/Node/cloneNode" target="_blank">cloneNode</a> [Node.prototype].
 		</p>
 		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> dupNode <span style="color: #339933;">=</span> node.<span style="color: #660066;">cloneNode</span><span style="color: #009900;">&#40;</span>deep<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
 	</div>
@@ -576,10 +576,10 @@ nodsArray.<span style="color: #660066;">forEach</span><span style="color: #00990
         <h2><strong>Изменеие иерархии элементов</strong></h2>
         <div class="text-context">
             <ul>
-                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/appendChild" target="_blank">appendChild [Node]</a> - Вставляет Node как последний дочерний узел данного элемента.</li>
-                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/insertBefore" target="_blank">insertBefore [Node]</a> - Вставляет первым Node данный в качестве параметра, непосредственно перед вторым, потомком данного элемента Node.</li>
-                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node.replaceChild" target="_blank">replaceChild [Node]</a> - Заменяет одного потомка Node из существующего на второй указанный в параметре.</li>
-                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/removeChild" target="_blank">removeChild [Node]</a> - Удаляет дочерний элемент из DOM. Возвращает удаленный элемент.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/appendChild" target="_blank">appendChild(node)</a> [Node] - Вставляет <i>node</i> как последний дочерний узел данного элемента.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/insertBefore" target="_blank">insertBefore(newNode, referenceNode)</a> [Node] - Вставляет <i>newNode</i> непосредственно перед <i>referenceNode</i>, потомком данного элемента.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node.replaceChild" target="_blank">replaceChild(newNode, oldNode)</a> [Node] - Заменяет одного потомка (<i>newNode</i>) из существующего на второй (<i>oldNode</i>).</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/removeChild" target="_blank">removeChild(node)</a> [Node] - Удаляет дочерний элемент <i>node</i> из DOM. Возвращает удаленный элемент.</li>
             </ul>
             <br>
             <a href="https://developer.mozilla.org/ru/docs/Web/API/Node" target="_blank" class="pull-right"><i>См. Node API</i></a>
@@ -629,10 +629,10 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 
         <section>
     <div class="wrap">
-        <h4 class="text-symbols">Главное правило DOM манипуляций: <i style="color: blue; text-transform: uppercase;">cократить количество изменений live DOM на столько на сколько возможно.</i></h4>
+        <h4 class="text-symbols">Главное правило DOM манипуляций: <i style="color: blue; text-transform: uppercase;">cократить количество изменений live DOM на столько, на сколько возможно.</i></h4>
         <div class="text-content aligncenter">
-            <p>Чем меньше мы меняем дерево DOM (live DOM - отслеживаемое дерево) тем меньше мы заставляем браузер пересчитывать позиции компонентов, обновлять CSS-DOM, перерерисовывать все что было затронуто...</p>
-            <p>Чем больше мы следуем этому правилу тем луше производительность наших веб-страниц.</p>
+            <p>Чем меньше мы меняем live DOM (отслеживаемое дерево), тем меньше мы заставляем браузер пересчитывать позиции компонентов, обновлять CSSOM (объектная модель CSS), перерерисовывать все, что было затронуто...</p>
+            <p>Чем больше мы следуем этому правилу, тем луше производительность наших веб-страниц.</p>
         </div>
     </div>
 </section>
@@ -643,11 +643,11 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
         <h2><strong>Модификация элемента</strong></h2>
         <div class="text-context">
             <p>
-                Для того чтобы изменять содержимое елемента предусмотренны два свойства - innerHtml и textContent
+                Для того, чтобы изменять содержимое элемента, предусмотренны два свойства - innerHtml и textContent
             </p>
             <ul>
-                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/innerHTML" target="_blank">innerHtml</a>[Element.prototype] - устанавливает или получает разметку дочерних элементов. При этом значение которое мы выставляем анализируется браузером.</li>
-                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/textContent" target="_blank">textContent</a>[Node.prototype] - позволяет задавать или получать текстовое содержимое элемента. При этом значение трактуется как текст, все спецсимволы автоматически экранируются.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/innerHTML" target="_blank">innerHtml</a> [Element.prototype] - устанавливает или получает разметку дочерних элементов. При этом значение, которое мы выставляем, анализируется браузером.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/textContent" target="_blank">textContent</a> [Node.prototype] - позволяет задавать или получать текстовое содержимое элемента. При этом значение трактуется как текст, все спецсимволы автоматически экранируются.</li>
             </ul>
         </div>
     </div>
@@ -665,7 +665,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 				<li><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/setAttribute" target="_blank">setAttribute(attrName, attrValue)</a>[Element.prototype]</li>
 			</ul>
 			<br/>
-			<pre class="note">Обратите внимание на то что для метода setAttribute оба параметра обязательны. Т.е. если мы просто хотим добавить новый аттрибут к элементу мы должны явно указать для него пустое значение:
+			<pre class="note">Обратите внимание на то, что для метода setAttribute оба параметра обязательны. Т.е., если мы просто хотим добавить новый аттрибут к элементу, мы должны явно указать для него пустое значение:
 				<pre class="code javascript" style="font-family:monospace;">element.<span style="color: #660066;">setAttribute</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;disabled&quot;</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></pre>
 		</div>
 	</div>
@@ -679,11 +679,11 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 				Способов доступа к списку CSS-классов существует несколько:
 			</p>
 			<ul>
-				<li>параметр <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/className" target="_blank">className</a>[Element.prototype] сязанный с атрибутом "class".</li>
-				<li>динамическая коллекция <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/classList" target="_blank">classList</a>[Element.prototype] (о ней поговорим далее)</li>
+				<li>параметр <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/className" target="_blank">className</a> [Element.prototype], сязанный с атрибутом "class".</li>
+				<li>динамическая коллекция <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/classList" target="_blank">classList</a> [Element.prototype] (о ней поговорим далее)</li>
 			</ul>
 			<br/>
-			<pre class="note">Формально доступится к списку классов можно и уже известным способом: методами setAttribute/getAttribute по имени "class".</pre>
+			<pre class="note">Формально доступиться к списку классов можно и уже известным способом: методами setAttribute/getAttribute по имени "class".</pre>
 		</div>
 	</div>
 </section>
@@ -692,14 +692,14 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 		<h2><strong>Коллекция classList</strong></h2>
 		<div class="text-context">
 			<p>
-				<a href="https://developer.mozilla.org/ru/docs/Web/API/Element/classList" target="_blank">classList</a> - это еще один псевдомассив, на этот раз реализующий прототип <a href="https://developer.mozilla.org/ru/docs/Web/API/DOMTokenList" target="_blank">DOMTokenList</a>.
-				Здесь у нас в наличии чуть больше методов чем мы видили в псевдомассивах ранее. С решением 95% задач можно справится не уходя за рамки данного прототипа.
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Element/classList" target="_blank">Element.classList</a> - это еще один псевдомассив, на этот раз реализующий прототип <a href="https://developer.mozilla.org/ru/docs/Web/API/DOMTokenList" target="_blank">DOMTokenList</a>.
+				Здесь у нас в наличии чуть больше методов, чем мы видили в псевдомассивах ранее. С решением 95% задач можно справиться не уходя за рамки данного прототипа.
 				Среди основных методов можно выделить:
 			</p>
 			<ul>
 				<li>add(className) - добавляет (если не добавлен) класс с именем className</li>
 				<li>remove(className) - удаляет (если есть) класс с именем className</li>
-				<li>contains(className) - проверка на наличеие класса с именем className</li>
+				<li>contains(className) - проверка на наличие класса с именем className</li>
 				<li>toggle(className) - добавляет если нету и удалет если есть класс с именем className</li>
 			</ul>
 			<br/>
@@ -721,7 +721,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 				<li>а для доступа к свойству <b><i>margin-top</i></b> ключ будет <b><i>marginTop</i></b></li>
 			</ul>
 			<p>
-				В качестве значения используется строка соответствующая тем же правилам что и оригинальное значение CSS-свойства.
+				В качестве значения используется строка, соответствующая тем же правилам, что и оригинальное значение CSS-свойства.
 			</p>
 		</div>
 	</div>
@@ -731,7 +731,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 		<h2><strong>Модификация стилей элемента</strong></h2>
 		<div class="text-context">
 			<p class="no-margin">
-				Рассмотрим следующй пример:
+				Рассмотрим следующий пример:
 			</p>
 			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">const</span> MAX <span style="color: #339933;">=</span> parseInt<span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'fff'</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">16</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <span style="color: #000066; font-weight: bold;">function</span> randomize<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
@@ -780,9 +780,151 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 </script>
 </template>
 			<p><i>
-				Здесь мы устанавливаем фон и цвет текста в случайне контрастные цвета.
+				Здесь мы устанавливаем фон и цвет текста в случайные контрастные цвета.
 			</i></p>
 		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2><strong>&lt;template&gt;</strong></h2>
+		<p class="text-context">
+			Затронем еще одну возможность HTML, а именно тэг <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/template" target="_blank">&lt;template&gt;</a>.
+			С помощью тега template осуществляется механизм для отложенного рендера HTML контента, который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript.
+		</p>
+		<p>
+			Рассмотрим его применение на практике:
+		</p>
+		<button class="codepen-trigger" data-codepen-id="codepen-template-example">Открыть в песочнице</button>
+
+<template id="codepen-template-example">
+	<div class="container">
+		<div id="notes">
+			<!--Here will be our notes-->
+
+			<template id="note-template">
+				<article class="note">
+					<div class="content" data-target="content"></div>
+					<div class="date" data-target="date"></div>
+				</article>
+			</template>
+		</div>
+
+		<div class="toolbar">
+			<form id="addItemForm" action="javascript: onAddItem()">
+				<input required name="content" type="text"/>
+				<button type="submit">Add</button>
+			</form>
+		</div>
+	</div>
+	<style class="codepen-css">
+		.container {
+			width: 600px;
+			margin: 0 auto;
+		}
+
+		.toolbar {
+			text-align: center;
+		}
+
+		#notes {
+			max-height: 250px;
+			overflow: auto;
+		}
+
+		.note {
+			background: #FFF9C4;
+			margin: 5px;
+			padding: 5px;
+			border: gray 1px solid;
+			border-radius: 5px;
+		}
+		.note > .content {
+			margin-bottom: 5px;
+		}
+		.note > .date {
+			text-align: right;
+			border-top: gray 1px solid;
+		}
+	</style>
+	<script class="codepen-js">
+		(function(publicScope) {
+			'use strict';
+
+			// Caching template
+			const template = document.getElementById('note-template');
+			// Caching container
+			const container = document.getElementById('notes');
+
+			function addItem (data) {
+				// Create a new node using template,
+				// passing content and deepCopy marker
+				let newNote = document.importNode(template.content, true);
+
+				// Here is one of variants how to make
+				// clone node filling more generic
+				// NOTE: optimize it more if u want to use approach like that
+
+				// Get all marked placeholders inside new item
+				let placeholders = newNote.querySelectorAll('[data-target]');
+				// Going through them
+				[].forEach.call(placeholders || [], (phElement) => {
+					// Get placeholder attribute value
+					let key = phElement.getAttribute('data-target');
+					// Using it as a key to get value from data object
+					phElement.textContent = String(data[key]); // Data type cast
+				});
+
+				// Append node
+				container.appendChild(newNote);
+			}
+
+
+			// Initial filling
+			[
+				{content: 'First Message', date: new Date()},
+				{content: 'Second Message', date: 'No date'}
+			].forEach((item) => addItem(item));
+
+			// An example of runtime usage
+			publicScope.onAddItem = () => {
+				var content =
+					document.querySelector('#addItemForm [name="content"]');
+				addItem({
+					content: content.value, date: new Date()
+				});
+			}
+		})(window);
+	</script>
+</template>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2>Что почитать? </h2>
+		<ul>
+			<li><a>...</a></li>
+		</ul>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><a class="text-symbols" href="#" target="_blank">Ссылка на задание №5</a></h2>
+
+		<pre class="note">Пишите чисто! <a href="#">Clean Code</a></pre>
+		<pre class="note">Оптимизируйте код. Не бойтесь задания на 9/10.</pre>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h1 class="text-symbols text-data"> Вопросы ??? </h1>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h1 class="text-symbols text-data">Спасибо за внимание!</h1>
 	</div>
 </section>
     </article>

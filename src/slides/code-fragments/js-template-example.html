@@ -1,0 +1,102 @@
+<button class="codepen-trigger" data-codepen-id="codepen-template-example">Открыть в песочнице</button>
+
+<template id="codepen-template-example">
+	<div class="container">
+		<div id="notes">
+			<!--Here will be our notes-->
+
+			<template id="note-template">
+				<article class="note">
+					<div class="content" data-target="content"></div>
+					<div class="date" data-target="date"></div>
+				</article>
+			</template>
+		</div>
+
+		<div class="toolbar">
+			<form id="addItemForm" action="javascript: onAddItem()">
+				<input required name="content" type="text"/>
+				<button type="submit">Add</button>
+			</form>
+		</div>
+	</div>
+	<style class="codepen-css">
+		.container {
+			width: 600px;
+			margin: 0 auto;
+		}
+
+		.toolbar {
+			text-align: center;
+		}
+
+		#notes {
+			max-height: 250px;
+			overflow: auto;
+		}
+
+		.note {
+			background: #FFF9C4;
+			margin: 5px;
+			padding: 5px;
+			border: gray 1px solid;
+			border-radius: 5px;
+		}
+		.note > .content {
+			margin-bottom: 5px;
+		}
+		.note > .date {
+			text-align: right;
+			border-top: gray 1px solid;
+		}
+	</style>
+	<script class="codepen-js">
+		(function(publicScope) {
+			'use strict';
+
+			// Caching template
+			const template = document.getElementById('note-template');
+			// Caching container
+			const container = document.getElementById('notes');
+
+			function addItem (data) {
+				// Create a new node using template,
+				// passing content and deepCopy marker
+				let newNote = document.importNode(template.content, true);
+
+				// Here is one of variants how to make
+				// clone node filling more generic
+				// NOTE: optimize it more if u want to use approach like that
+
+				// Get all marked placeholders inside new item
+				let placeholders = newNote.querySelectorAll('[data-target]');
+				// Going through them
+				[].forEach.call(placeholders || [], (phElement) => {
+					// Get placeholder attribute value
+					let key = phElement.getAttribute('data-target');
+					// Using it as a key to get value from data object
+					phElement.textContent = String(data[key]); // Data type cast
+				});
+
+				// Append node
+				container.appendChild(newNote);
+			}
+
+
+			// Initial filling
+			[
+				{content: 'First Message', date: new Date()},
+				{content: 'Second Message', date: 'No date'}
+			].forEach((item) => addItem(item));
+
+			// An example of runtime usage
+			publicScope.onAddItem = () => {
+				var content =
+					document.querySelector('#addItemForm [name="content"]');
+				addItem({
+					content: content.value, date: new Date()
+				});
+			}
+		})(window);
+	</script>
+</template>
