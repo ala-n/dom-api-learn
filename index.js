@@ -1,7 +1,7 @@
 var http = require('http');
 var Static = require('node-static');
 
-var file = new Static.Server('./dist', {gzip: true, cache: 7200});
+var file = new Static.Server('./publish', {gzip: true, cache: 7200});
 
 var server = http.createServer(function (request, response) {
     request.addListener('end', function () {
