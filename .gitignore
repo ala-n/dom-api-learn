@@ -1,4 +1,3 @@
-dist
 node_modules
 # Ignore IDE and Operating System artifacts
 .idea

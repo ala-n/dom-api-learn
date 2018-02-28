@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO -->
+    <title>WebSlides: Making HTML presentations easy</title>
+    <meta name="description" content="WebSlides is the easiest way to make HTML presentations, portfolios, and landings. Just essential features.">
+
+    <!-- URL CANONICAL -->
+    <!-- <link rel="canonical" href="http://your-url.com/"> -->
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <!-- CSS WebSlides -->
+    <link rel="stylesheet" type='text/css' media='all' href="styles.min.css">
+
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" sizes="16x16" href="images/favicons/favicon.png">
+    <link rel="shortcut icon" sizes="32x32" href="images/favicons/favicon-32.png">
+    <link rel="apple-touch-icon icon" sizes="76x76" href="images/favicons/favicon-76.png">
+    <link rel="apple-touch-icon icon" sizes="120x120" href="images/favicons/favicon-120.png">
+    <link rel="apple-touch-icon icon" sizes="152x152" href="images/favicons/favicon-152.png">
+    <link rel="apple-touch-icon icon" sizes="180x180" href="images/favicons/favicon-180.png">
+    <link rel="apple-touch-icon icon" sizes="192x192" href="images/favicons/favicon-192.png">
+
+    <!-- Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#333333">
+
+</head>
+<body>
+<header role="banner">
+    <nav role="navigation">
+        <p class="logo"><a href="index.html" title="Home">JS vs DOM</a></p>
+        <ul class="hide-xs">
+            <li class="header-text"><small>Resources: </small></li>
+            <li><a href="https://developer.mozilla.org" target="_blank">
+                <img src="images/logos/mdn.svg"/>
+            </a></li>
+        </ul>
+    </nav>
+</header>
+
+<main role="main">
+    <article id="webslides" class="vertical">
+        <section>
+    <!--<span class="background" style="background-image:url('https://webslides.tv/static/images/nature.jpg')"></span>-->
+    <span class="background" style="background-image:url('images/bg-main1.jpg')"></span>
+    <div class="wrap aligncenter size-70">
+        <h1 class="text-landing">JS: Работа с DOM</h1>
+
+        <div class="content-right">
+            <p class="text-info">Presenter: <i>Alexey Stsefanovich</i></p>
+        </div>
+    </div>
+</section>
+        <section>
+    <div class="wrap">
+        <h2><strong>JavaScript</strong></h2>
+        <p class="text-context">JavaScript — это кросс-платформенный, объектно-ориентированный скриптовый язык, являющийся небольшим и легковесным. Внутри среды исполнения JavaScript может быть связан с объектами данной среды и предоставлять программный контроль над ними.</p>
+    </div>
+</section>
+        <section>
+    <div class="wrap">
+        <h2><strong>JavaScript</strong></h2>
+        <p class="text-context no-margin">Ядро JavaScript расширяется для различных целей путем добавления в него новых
+            объектов определяющих API для взаимодействия с внешним миром, например:</p>
+        <ul>
+            <li>JavaScript на стороне клиента расширяет ядро языка, предоставляя объекты для контроля браузера (Browser
+                Object Model (BOM)) а также непосредственно Document Object Model (DOM), о которых мы поговорим далее.
+            </li>
+            <li>JavaScript на стороне сервера расширяет ядро языка, предоставляя объекты обращения к файловой системе,
+                обмена информацией по протоколу HTTP и т.п.
+            </li>
+            <li>JavaScript в базах данных в свою очередь расширен объектами доступа к элементам этих баз данных.</li>
+        </ul>
+    </div>
+</section>
+        <section>
+    <div class="wrap">
+        <h2><strong>Browser Object Model</strong></h2>
+
+        <div class="zoomIn">
+            <img class="aligncenter size-80 fullwidth-80" src="images/BOM.png" alt="Browser Object Model Diagram"/>
+        </div>
+    </div>
+</section>
+
+        <section>
+    <div class="wrap">
+        <h2><strong>Document Object Model</strong></h2>
+        <p class="text-context">Объектная модель документа (Document Object Model, DOM) - это фундаментальный прикладной программный интерфейс, обеспечивающий возможность работы с содержимым HTML и XML-документов.<br>
+            Прежде всего, следует понимать, что вложенные элементы HTML или XML-документов представлены в виде дерева объектов DOM. Древовидное представление HTML-документа содержит узлы, представляющие элементы или теги, такие как &lt;body&gt; и &lt;p&gt;, и узлы, представляющие строки текста.</p>
+    </div>
+</section>
+        <section>
+    <div class="wrap">
+        <h2><strong>DOM as tree</strong></h2>
+
+        <div class="grid vertical-align">
+            <div class="column">
+                <pre class="code html5" style="font-family:monospace;">
+<span style="color: #009900;">&lt;<span class="code-tag">html</span>&gt;</span>
+  <span style="color: #009900;">&lt;<span class="code-tag">head</span>&gt;</span>
+     <span style="color: #009900;">&lt;<span class="code-tag">title</span>&gt;</span>Пример дкумента<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">title</span>&gt;</span>
+  <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">head</span>&gt;</span>
+  <span style="color: #009900;">&lt;<span class="code-tag">body</span>&gt;</span>
+     <span style="color: #009900;">&lt;<span class="code-tag">h1</span>&gt;</span>Это HTML-документ<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">h1</span>&gt;</span>
+     <span style="color: #009900;">&lt;<span class="code-tag">p</span>&gt;</span>Пример <span style="color: #009900;">&lt;<span class="code-tag">i</span>&gt;</span>простого<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">i</span>&gt;</span> текста.<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">p</span>&gt;</span>
+  <span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">body</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">html</span>&gt;</span>
+</pre>
+            </div>
+            <div class="column">
+                <pre class="no-padding"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                             class="svg-tree"
+                                             viewBox="0 0 415 245"
+                                             style="width: 100%;">
+
+                    <polyline class="tree-line" points="155,25 155,40"></polyline>
+                    <polyline class="tree-line" points="155,60 155,70 65,70 65,80 65,70 245,70 245,80"></polyline>
+                    <polyline class="tree-line" points="65,100 65,120"></polyline>
+                    <polyline class="tree-line" points="65,140 65,155"></polyline>
+                    <polyline class="tree-line" points="245,90 245,110 185,110 185,120 185,110 305,110 305,120"></polyline>
+                    <polyline class="tree-line" points="185,140 185,155"></polyline>
+                    <polyline class="tree-line" points="305,140 305,190 305,182 235,182 235,190 235,182 375,182 375,190"></polyline>
+                    <polyline class="tree-line" points="305,210 305,225"></polyline>
+
+                    <g class="tree-box box-green">
+                        <rect x="115" y="5"/>
+                        <text x="155" y="19" text-anchor="middle">document</text>
+                    </g>
+                    <g class="tree-box box-blue">
+                        <rect x="115" y="40"/>
+                        <text x="155" y="54" text-anchor="middle">&lthtml&gt</text>
+                    </g>
+
+                    <g class="tree-box box-green">
+                        <rect x="25" y="80"/>
+                        <text x="65" y="94" text-anchor="middle">&lthead&gt</text>
+                    </g>
+                    <g class="tree-box box-green">
+                        <rect x="205" y="80"/>
+                        <text x="245" y="94" text-anchor="middle">&ltbody&gt</text>
+                    </g>
+
+
+                    <g class="tree-box box-purple">
+                        <rect x="25" y="120"/>
+                        <text x="65" y="134" text-anchor="middle">&lttitle&gt</text>
+                    </g>
+                    <g class="tree-box box-purple">
+                        <rect x="145" y="120"/>
+                        <text x="185" y="134" text-anchor="middle">&lth1&gt</text>
+                    </g>
+                    <g class="tree-box box-purple">
+                        <rect x="265" y="120"/>
+                        <text x="305" y="134" text-anchor="middle">&ltp&gt</text>
+                    </g>
+
+                    <g class="tree-box x-large box-blue">
+                        <rect x="10" y="155"/>
+                        <text x="65" y="169" text-anchor="middle">"Пример документа"</text>
+                    </g>
+                    <g class="tree-box x-large box-blue">
+                        <rect x="130" y="155"/>
+                        <text x="185" y="169" text-anchor="middle">"Это HTML-документ"</text>
+                    </g>
+
+                    <g class="tree-box small box-blue">
+                        <rect x="205" y="190"/>
+                        <text x="235" y="204" text-anchor="middle">"Пример "</text>
+                    </g>
+                    <g class="tree-box small box-blue">
+                        <rect x="275" y="190"/>
+                        <text x="305" y="204" text-anchor="middle">&lti&gt</text>
+                    </g>
+                    <g class="tree-box small box-blue">
+                        <rect x="345" y="190"/>
+                        <text x="375" y="204" text-anchor="middle">" текста."</text>
+                    </g>
+
+                    <g class="tree-box box-blue">
+                        <rect x="265" y="220"/>
+                        <text x="305" y="234" text-anchor="middle">"простого"</text>
+                    </g>
+                </svg></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section>
+    <div class="wrap">
+        <h2><strong>Работа с DOM</strong></h2>
+        <ol class="primary-list text-context">
+            <li class="active-li"><a href="#slide=8">API узлов</a></li>
+            <li class="disabled-li"><a>Получение элементов на странице</a></li>
+            <li class="disabled-li"><a>Доступ к окружению элемнтов страницы</a></li>
+            <li class="disabled-li"><a>Модификация элементов</a></li>
+        </ol>
+    </div>
+</section>
+        <section>
+    <div class="wrap">
+        <h2><strong class="svg-tree-line">API: Дерево прототипов узла (Node)</strong></h2>
+
+        <div class="fadeInUp">
+            <svg class="aligncenter fullwidth-90 svg-tree" viewBox="0 0 450 240" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank" class="tree-box box-blue">
+                    <rect x="10" y="10"/>
+                    <text x="50" y="24" text-anchor="middle">Node</text>
+                </a>
+
+                <polyline class="tree-line" points="90,20 110,20 100,20 100,50 110,50 100,50 100,80 110,80 100,80 100,110 110,110"></polyline>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank" class="tree-box box-green">
+                    <rect x="110" y="10"/>
+                    <text x="150" y="24" text-anchor="middle">Document</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/CharacterData" target="_blank" class="tree-box box-green">
+                    <rect x="110" y="40"/>
+                    <text x="150" y="54" text-anchor="middle">CharacterData</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Attr" target="_blank" class="tree-box box-green">
+                    <rect x="110" y="70"/>
+                    <text x="150" y="84" text-anchor="middle">Attr</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_blank" class="tree-box box-green">
+                    <rect x="110" y="100"/>
+                    <text x="150" y="114" text-anchor="middle">Element</text>
+                </a>
+
+                <polyline class="tree-line" points="190,50 200,50 200,35 210,35 200,35 200,65 210,65"></polyline>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text" target="_blank" class="tree-box box-purple">
+                    <rect x="210" y="25"/>
+                    <text x="250" y="39" text-anchor="middle">Text</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Comment" target="_blank" class="tree-box box-purple">
+                    <rect x="210" y="55" width="80" height="20"/>
+                    <text x="250" y="69" text-anchor="middle">Comment</text>
+                </a>
+
+                <polyline class="tree-line" points="190,110 210,110"></polyline>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement" target="_blank" class="tree-box box-purple">
+                    <rect x="210" y="100"/>
+                    <text x="250" y="114" text-anchor="middle">HTMLElement</text>
+                </a>
+
+                <polyline class="tree-line"
+                          points="290,110 310,110 300,110 300,80 310,80 300,80 300,50 310,50 300,50 300,140 310,140 300,140 300,170 310,170
+                              300,170 300,200 310,200 300,200 300,230 310,230"></polyline>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadElement" target="_blank" class="tree-box box-purple large">
+                    <rect x="310" y="40"/>
+                    <text x="360" y="54" text-anchor="middle">HTMLHeadElement</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement" target="_blank" class="tree-box box-purple large">
+                    <rect x="310" y="70"/>
+                    <text x="360" y="84" text-anchor="middle">HTMLTitleElement</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLBodyElement" target="_blank" class="tree-box box-purple large">
+                    <rect x="310" y="100"/>
+                    <text x="360" y="114" text-anchor="middle">HTMLBodyElement</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement" target="_blank" class="tree-box box-purple large">
+                    <rect x="310" y="130"/>
+                    <text x="360" y="144" text-anchor="middle">HTMLDivElement</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement" target="_blank" class="tree-box box-purple large">
+                    <rect x="310" y="160"/>
+                    <text x="360" y="174" text-anchor="middle">HTMLInputElement</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLLinkElement" target="_blank" class="tree-box box-purple large">
+                    <rect x="310" y="190"/>
+                    <text x="360" y="204" text-anchor="middle">HTMLLinkElement</text>
+                </a>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank" class="tree-box box-purple large">
+                    <rect x="310" y="220"/>
+                    <text x="360" y="234" text-anchor="middle">...</text>
+                </a>
+            </svg>
+        </div>
+
+    </div>
+</section>
+
+        <section>
+    <div class="wrap">
+        <h2><strong>Работа с DOM</strong></h2>
+        <ol class="primary-list text-context">
+            <li><a href="#slide=8">API узлов</a></li>
+            <li class="active-li"><a href="#slide=10">Получение элементов на странице</a></li>
+            <li class="disabled-li"><a>Доступ к окружению элемнтов страницы</a></li>
+            <li class="disabled-li"><a>Модификация элементов</a></li>
+        </ol>
+    </div>
+</section>
+        <section>
+    <div class="wrap">
+        <h2><strong>Получение элементов на странице</strong></h2>
+
+        <div class="text-context">
+            <h5>1 - По уникальному идентификатру id:</h5>
+            <br/>
+            <pre class="code html5">
+<span style="color: #009900;">&lt;<span class="code-tag">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-block&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;el_name&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="font-weight: bold; text-decoration: underline;"><span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;myElementId&quot;</span></span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;email&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">div</span>&gt;</span>
+</pre>
+            <br/>
+            <pre class="code javascript">
+<span style="color: #000066; font-weight: bold;">var</span> input <span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;myElementId&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+</pre>
+
+        </div>
+    </div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Получение элементов на странице</strong></h2>
+		<div class="text-context">
+			<h5>2 - По атрибуту name:</h5>
+			<br/>
+			<pre class="code html5">
+<span style="color: #009900;">&lt;<span class="code-tag">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-block&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="font-weight: bold; text-decoration: underline;"><span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;el_name&quot;</span></span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;myElementId&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;email&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">div</span>&gt;</span>
+</pre>
+			<br/>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> inputs <span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;el_name&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// NodeList</span></pre>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Получение элементов на странице</strong></h2>
+		<div class="text-context">
+			<h5>3 - По тегу:</h5>
+			<br/>
+			<pre class="code html5">
+<span style="color: #009900;">&lt;<span style="font-weight: bold; text-decoration: underline;"><span class="code-tag">div</span></span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-block&quot;</span>&gt;</span>
+	<span style="color: #009900;">&lt;<span style="font-weight: bold; text-decoration: underline;"><span class="code-tag">input</span></span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;el_name&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+	<span style="color: #009900;">&lt;<span style="font-weight: bold; text-decoration: underline;"><span class="code-tag">input</span></span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;myElementId&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;email&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="font-weight: bold; text-decoration: underline;"><span class="code-tag">div</span></span>&gt;</span>
+</pre>
+			<br/>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> inputs<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;input&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">; <span style="color: #006600; font-style: italic;">// NodeList</span></span>
+<span style="color: #000066; font-weight: bold;">var</span> div<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// First (and one in current situation)</span>
+<span style="color: #000066; font-weight: bold;">var</span> theSameInputs<span style="color: #339933;">=</span> div.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;input&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2><strong>Получение элементов на странице</strong></h2>
+		<div class="text-context">
+			<h5>4 - По классу</h5>
+			<br/>
+			<pre class="code html5">
+<span style="color: #009900;">&lt;<span class="code-tag">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-block&quot;</span>&gt;</span>
+	<span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;el_name&quot;</span> <span style="font-weight: bold; text-decoration: underline;"><span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span></span><span style="color: #66cc66;">/</span>&gt;</span>
+	<span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;myElementId&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;email&quot;</span> <span style="font-weight: bold; text-decoration: underline;"><span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span></span><span style="color: #66cc66;">/</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">div</span>&gt;</span>
+</pre>
+			<br/>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> inputs<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;my-input&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">; <span style="color: #006600; font-style: italic;">// NodeList</span></span>
+<span style="color: #000066; font-weight: bold;">var</span> theSameInputs<span style="color: #339933;">=</span> div.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;my-input&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// Available for Elements</span></pre>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Получение элементов на странице</strong></h2>
+		<div class="text-context">
+			<h5> 5 - По <a class="important-link" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Селекторы" target="_blank">CSS селектору</a>.</h5>
+			<br/>
+			<p class="no-margin">Метод querySelector вернет первый соответствующий селектору элемент.</p>
+			<pre class="code html5">
+<span style="color: #009900;">&lt;<span class="code-tag">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-block&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;el_name&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+    <span style="color: #009900; font-weight: bold; text-decoration: underline;"><span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;myElementId&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;email&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span></span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">div</span>&gt;</span>
+</pre>
+			<br/>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> emailInput <span style="color: #339933;">=</span> document.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'input[type=&quot;email&quot;]'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// Node</span>
+<span style="color: #000066; font-weight: bold;">var</span> sameEmailInput <span style="color: #339933;">=</span> div.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'input[type=&quot;email&quot;]'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// Available for Elements</span></pre>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Получение элементов на странице</strong></h2>
+		<div class="text-context">
+			<h5>5.1 - По <a class="important-link" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Селекторы" target="_blank">CSS селектору</a>.</h5>
+			<br/>
+			<p class="no-margin">Метод querySelectorAll вернет все соответствующие селектору элементы.</p>
+			<pre class="code html5">
+<span style="color: #009900;">&lt;<span class="code-tag">div</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-block&quot;</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="font-weight: bold; text-decoration: underline;"><span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;el_name&quot;</span></span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+    <span style="color: #009900;">&lt;<span class="code-tag">input</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;myElementId&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;email&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;my-input&quot;</span><span style="color: #66cc66;">/</span>&gt;</span>
+<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span class="code-tag">div</span>&gt;</span>
+</pre>
+			<br/>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> inputs <span style="color: #339933;">=</span> document.<span style="color: #660066;">querySelectorAll</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'div &gt; .my-input'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// NodeList</span>
+<span style="color: #000066; font-weight: bold;">var</span> sameInputs <span style="color: #339933;">=</span> div.<span style="color: #660066;">querySelectorAll</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'input.my-input'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// Available for Elements</span></pre>
+		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2><strong>Немного о коллекциях NodeList</strong></h2>
+		<p class="text-context">
+			Как уже было замечено в тех случаях когда результатом может являтся более одного элемента возвращается коллекция элеменнтов <a href="https://developer.mozilla.org/ru/docs/Web/API/NodeList">NodeList</a>.
+			NodeList это псевдо-массив и не содержит в цепочке прототипов прототип Array.prototype поэтому
+			<span style="color: red; font-weight: bold">не получится напрямую вызывать методы массивов на объектах NodeList</span>.
+		</p>
+		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> nods<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000066; font-weight: bold;">for</span><span style="color: #009900;">&#40;</span>let i<span style="color: #339933;">=</span><span style="color: #CC0000;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> nods.<span style="color: #660066;">length</span><span style="color: #339933;">;</span> <span style="color: #339933;">++</span>i<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    let node <span style="color: #339933;">=</span> nods<span style="color: #009900;">&#91;</span>i<span style="color: #009900;">&#93;</span><span style="color: #339933;">;</span>
+    <span style="color: #006600; font-style: italic;">// ...</span>
+<span style="color: #009900;">&#125;</span>
+&nbsp;
+nods.<span style="color: #660066;">forEach</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: red; font-style: italic;">// TypeError: nods.forEach is not a function</span></pre>
+	</div>
+</section>
+        <section>
+    <div class="wrap">
+        <h2><strong>Вызов методов Array на псевдо-массивах</strong></h2>
+        <p class="text-context">
+            Выход есть и возможен он благодаря функциям call и apply из Function.prototype. Мы можем вызывать функции прототипа Array в контексте объектов NodeList. Также бывает удобным и преобразовавать NodeList в Array при помощи все того же способа - вызова в контексте.
+        </p>
+        <pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> nods<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="">Array</span>.<span style="color: #000066; font-weight: bold;">prototype</span>.<span style="color: #660066;">call</span><span style="color: #009900;">&#40;</span>nods<span style="color: #339933;">,</span> <span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000066; font-weight: bold;">var</span> nodsArray <span style="color: #339933;">=</span> <span style="">Array</span>.<span style="color: #000066; font-weight: bold;">prototype</span>.<span style="color: #660066;">slice</span>.<span style="color: #660066;">call</span><span style="color: #009900;">&#40;</span>nods<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// convert NodeList to Array</span>
+nodsArray.<span style="color: #660066;">forEach</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span>node<span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span><span style="color: #009900;">&#123;</span> <span style="color: #006600; font-style: italic;">/*...*/</span> <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+        <br/>
+        <pre class="note">Такой "трюк" можно использовать и на других псевдо-массивах, например на <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/arguments">arguments</a>.</pre>
+    </div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2><strong>Работа с DOM</strong></h2>
+		<ol class="primary-list text-context">
+			<li><a href="#slide=8">API узлов</a></li>
+			<li><a href="#slide=10">Получение элементов на странице</a></li>
+			<li class="active-li"><a href="#slide=19">Доступ к окружению элемнтов страницы</a></li>
+			<li class="disabled-li"><a>Модификация элементов</a></li>
+		</ol>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Доступ к окружению элемнтов страницы</strong></h2>
+		<p>
+			Помимо описанных ранее методов для получения произвольного элемента в дереве сам интерфейс (прототип)
+			<a href="https://developer.mozilla.org/ru/docs/Web/API/Node" target="_blank">Node</a> содержит динамические ссылки на все "окружение" узла дерева:
+			родительский элемент (parentNode), коллекцию дочерних элементов (childNodes), ссылки на первый/последний дочерний элемент (firstChild/lastChild), ссылки на соседей в родительском элементе (previousSibling / nextSibling).
+			Визуально можно просмотреть доступные связи узла на следующей <a href="#slide=20">схеме</a>.
+		</p>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Доступ к окружению элемнтов страницы</strong></h2>
+		<div class="pageheight">
+			<svg viewBox="0 0 340 300" style="" class="node-refs-diagram aligncenter fullwidth-90" xmlns="http://www.w3.org/2000/svg" version="1.1">
+				<rect x="70" y="25" height="240" width="200" stroke="black" fill="transparent"></rect>
+				<text x="73" y="34" text-anchor="start" font-size="8px" font-weight="bold">DIV</text>
+
+				<rect x="80" y="50" height="50" width="180" stroke="black" fill="transparent"></rect>
+				<text x="83" y="59" text-anchor="start" font-size="8px" font-weight="bold">H1</text>
+				<rect x="80" y="120" height="50" width="180" stroke="black" fill="transparent"></rect>
+				<text x="83" y="129" text-anchor="start" font-size="8px" font-weight="bold">P</text>
+				<rect x="80" y="190" height="50" width="180" stroke="black" fill="transparent"></rect>
+				<text x="83" y="199" text-anchor="start" font-size="8px" font-weight="bold">P</text>
+
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Node/childNodes" target="_blank"
+				   class="svg-interactive">
+					<polyline points="75,24 75,15 45,15 45,39 42,35 45,39 48,35" stroke="darkgray"
+							  fill="none"></polyline>
+					<text x="70" y="10" text-anchor="middle" font-size="8px" font-weight="bold">childNodes [NodeList]
+					</text>
+					<rect x="40" y="40" height="210" width="10" stroke="gray" fill="transparent"></rect>
+					<polyline points="51,75 79,75 75,72 79,75 75,78" stroke="darkgray" fill="none"></polyline>
+					<text x="56" y="72" text-anchor="middle" font-size="8px" font-weight="bold">[0]</text>
+					<polyline points="51,145 79,145 75,142 79,145 75,148" stroke="darkgray" fill="none"></polyline>
+					<text x="56" y="142" text-anchor="middle" font-size="8px" font-weight="bold">[1]</text>
+					<polyline points="51,215 79,215 75,212 79,215 75,218" stroke="darkgray" fill="none"></polyline>
+					<text x="56" y="212" text-anchor="middle" font-size="8px" font-weight="bold">[2]</text>
+				</a>
+
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Node/parentNode" target="_blank"
+				   class="svg-interactive">
+					<polyline points="261,145 290,145 290,120 271,120 275,117 271,120 275,123" stroke="darkgray"
+							  fill="none"></polyline>
+					<text x="295" y="135" text-anchor="middle" font-size="8px" font-weight="bold">parentNode</text>
+				</a>
+
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Node/firstChild" target="_blank"
+				   class="svg-interactive">
+					<polyline points="210,25 210,15 240,15 240,49 237,45 240,49 243,45" stroke="darkgray"
+							  fill="none"></polyline>
+					<text x="225" y="10" text-anchor="middle" font-size="8px" font-weight="bold">firstChild</text>
+				</a>
+
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Node/lastChild" target="_blank"
+				   class="svg-interactive">
+					<polyline points="210,265 210,275 240,275 240,241 237,245 240,241 243,245" stroke="darkgray"
+							  fill="none"></polyline>
+					<text x="225" y="285" text-anchor="middle" font-size="8px" font-weight="bold">lastChild</text>
+				</a>
+
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Node/previousSibling" target="_blank"
+				   class="svg-interactive">
+					<polyline points="175,120 175,101 172,105 175,101 178,105" stroke="darkgray" fill="none"></polyline>
+					<text x="208" y="113" text-anchor="middle" font-size="8px" font-weight="bold">previousSibling</text>
+				</a>
+
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Node/nextSibling" target="_blank"
+				   class="svg-interactive">
+					<polyline points="175,170 175,189 172,185 175,189 178,185" stroke="darkgray" fill="none"></polyline>
+					<text x="200" y="182" text-anchor="middle" font-size="8px" font-weight="bold">nextSibling</text>
+				</a>
+			</svg>
+		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2><strong>Работа с DOM</strong></h2>
+		<ol class="primary-list text-context">
+			<li><a href="#slide=8">API узлов</a></li>
+			<li><a href="#slide=10">Получение элементов на странице</a></li>
+			<li><a href="#slide=19">Доступ к окружению элемнтов страницы</a></li>
+			<li class="active-li"><a href="#slide=22">Модификация элементов</a></li>
+		</ol>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Создание элемента</strong></h2>
+		<p class="text-context">
+			Для того чтобы создать новый элемент не привязанный к дереву используется метод <a href="https://developer.mozilla.org/ru/docs/DOM/document.createElement" target="_blank">createElement</a> [Document.prototype].
+		</p>
+		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> newDiv <span style="color: #339933;">=</span> document.<span style="color: #660066;">createElement</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+		<br/>
+		<h2><strong>Клонирование элемента</strong></h2>
+		<p class="text-context">
+			Для того чтобы создать копию существуюего узла используется метод <a href="https://developer.mozilla.org/ru/docs/Web/API/Node/cloneNode" target="_blank">cloneNode</a> [Node.prototype].
+		</p>
+		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> dupNode <span style="color: #339933;">=</span> node.<span style="color: #660066;">cloneNode</span><span style="color: #009900;">&#40;</span>deep<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+	</div>
+</section>
+
+        <section>
+    <div class="wrap">
+        <h2><strong>Изменеие иерархии элементов</strong></h2>
+        <div class="text-context">
+            <ul>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/appendChild" target="_blank">appendChild [Node]</a> - Вставляет Node как последний дочерний узел данного элемента.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/insertBefore" target="_blank">insertBefore [Node]</a> - Вставляет первым Node данный в качестве параметра, непосредственно перед вторым, потомком данного элемента Node.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node.replaceChild" target="_blank">replaceChild [Node]</a> - Заменяет одного потомка Node из существующего на второй указанный в параметре.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/removeChild" target="_blank">removeChild [Node]</a> - Удаляет дочерний элемент из DOM. Возвращает удаленный элемент.</li>
+            </ul>
+            <br>
+            <a href="https://developer.mozilla.org/ru/docs/Web/API/Node" target="_blank" class="pull-right"><i>См. Node API</i></a>
+        </div>
+    </div>
+</section>
+
+        <section>
+    <div class="wrap">
+        <h2><strong>Пример</strong></h2>
+        <div class="text-context">
+            <pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> container <span style="color: #339933;">=</span> document.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'div.container'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000066; font-weight: bold;">var</span> stub <span style="color: #339933;">=</span> container.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'.empty-stub'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+stub <span style="color: #339933;">&amp;&amp;</span> container.<span style="color: #660066;">removeChild</span><span style="color: #009900;">&#40;</span>stub<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000066; font-weight: bold;">var</span> row <span style="color: #339933;">=</span> document.<span style="color: #660066;">createElement</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'div'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+row.<span style="color: #660066;">textContent</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">new</span> <span style="">Date</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">toString</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+container.<span style="color: #660066;">appendChild</span><span style="color: #009900;">&#40;</span>row<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+
+<button class="codepen-trigger" data-codepen-id="codepen-manip-example">Посмотреть в песочнице</button>
+
+<template id="codepen-manip-example">
+<div class="container">
+	<span class="empty-stub">Empty</span>
+</div>
+<button onclick="manip()">Add</button>
+
+<script class="codepen-js">
+    function manip() {
+        var container = document.querySelector('div.container');
+
+        var stub = container.querySelector('.empty-stub');
+        stub && container.removeChild(stub);
+
+        var row = document.createElement('div');
+        row.textContent = (new Date()).toString();
+
+        container.appendChild(row);
+    }
+</script>
+</template>
+        </div>
+    </div>
+</section>
+
+        <section>
+    <div class="wrap">
+        <h4 class="text-symbols">Главное правило DOM манипуляций: <i style="color: blue; text-transform: uppercase;">cократить количество изменений live DOM на столько на сколько возможно.</i></h4>
+        <div class="text-content aligncenter">
+            <p>Чем меньше мы меняем дерево DOM (live DOM - отслеживаемое дерево) тем меньше мы заставляем браузер пересчитывать позиции компонентов, обновлять CSS-DOM, перерерисовывать все что было затронуто...</p>
+            <p>Чем больше мы следуем этому правилу тем луше производительность наших веб-страниц.</p>
+        </div>
+    </div>
+</section>
+
+
+        <section>
+    <div class="wrap">
+        <h2><strong>Модификация элемента</strong></h2>
+        <div class="text-context">
+            <p>
+                Для того чтобы изменять содержимое елемента предусмотренны два свойства - innerHtml и textContent
+            </p>
+            <ul>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/innerHTML" target="_blank">innerHtml</a>[Element.prototype] - устанавливает или получает разметку дочерних элементов. При этом значение которое мы выставляем анализируется браузером.</li>
+                <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Node/textContent" target="_blank">textContent</a>[Node.prototype] - позволяет задавать или получать текстовое содержимое элемента. При этом значение трактуется как текст, все спецсимволы автоматически экранируются.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Модификация элемента</strong></h2>
+		<div class="text-context">
+			<p>
+				Доступ к аттрибутам элемента осуществляется посредством методов:
+			</p>
+			<ul>
+				<li><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/hasAttribute" target="_blank">hasAttribute(attrName)</a>[Element.prototype]</li>
+				<li><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/getAttribute" target="_blank">getAttribute(attrName)</a>[Element.prototype]</li>
+				<li><a href="https://developer.mozilla.org/ru/docs/Web/API/Element/setAttribute" target="_blank">setAttribute(attrName, attrValue)</a>[Element.prototype]</li>
+			</ul>
+			<br/>
+			<pre class="note">Обратите внимание на то что для метода setAttribute оба параметра обязательны. Т.е. если мы просто хотим добавить новый аттрибут к элементу мы должны явно указать для него пустое значение:
+				<pre class="code javascript" style="font-family:monospace;">element.<span style="color: #660066;">setAttribute</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;disabled&quot;</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">&quot;&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre></pre>
+		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2><strong>Модификация списка CSS-классов элемента</strong></h2>
+		<div class="text-context">
+			<p>
+				Способов доступа к списку CSS-классов существует несколько:
+			</p>
+			<ul>
+				<li>параметр <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/className" target="_blank">className</a>[Element.prototype] сязанный с атрибутом "class".</li>
+				<li>динамическая коллекция <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/classList" target="_blank">classList</a>[Element.prototype] (о ней поговорим далее)</li>
+			</ul>
+			<br/>
+			<pre class="note">Формально доступится к списку классов можно и уже известным способом: методами setAttribute/getAttribute по имени "class".</pre>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Коллекция classList</strong></h2>
+		<div class="text-context">
+			<p>
+				<a href="https://developer.mozilla.org/ru/docs/Web/API/Element/classList" target="_blank">classList</a> - это еще один псевдомассив, на этот раз реализующий прототип <a href="https://developer.mozilla.org/ru/docs/Web/API/DOMTokenList" target="_blank">DOMTokenList</a>.
+				Здесь у нас в наличии чуть больше методов чем мы видили в псевдомассивах ранее. С решением 95% задач можно справится не уходя за рамки данного прототипа.
+				Среди основных методов можно выделить:
+			</p>
+			<ul>
+				<li>add(className) - добавляет (если не добавлен) класс с именем className</li>
+				<li>remove(className) - удаляет (если есть) класс с именем className</li>
+				<li>contains(className) - проверка на наличеие класса с именем className</li>
+				<li>toggle(className) - добавляет если нету и удалет если есть класс с именем className</li>
+			</ul>
+			<br/>
+		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2><strong>Модификация стилей элемента</strong></h2>
+		<div class="text-context">
+			<p class="no-margin">
+				Для получения и установки инлайновых стилей используеться свойство <a href="https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/style" target="_blank">style</a> [HTMLElement].
+				Это свойство является экземпляром прототипа <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration" target="_blank">CSSStyleDeclaration</a>. CSSStyleDeclaration - не псевдо-массив, а несколько более сложная структура, это хранилище ключ-значение с динамическим подсчетом их кол-ва (доступно свойство length).
+				В качестве ключа используется название css опции в CamelCase. Т.е.:
+			</p>
+			<ul>
+				<li>для доступа к свойству <b><i>color</i></b> используется такой же ключ <b><i>color</i></b></li>
+				<li>а для доступа к свойству <b><i>margin-top</i></b> ключ будет <b><i>marginTop</i></b></li>
+			</ul>
+			<p>
+				В качестве значения используется строка соответствующая тем же правилам что и оригинальное значение CSS-свойства.
+			</p>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2><strong>Модификация стилей элемента</strong></h2>
+		<div class="text-context">
+			<p class="no-margin">
+				Рассмотрим следующй пример:
+			</p>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">const</span> MAX <span style="color: #339933;">=</span> parseInt<span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'fff'</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">16</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #000066; font-weight: bold;">function</span> randomize<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+  <span style="color: #000066; font-weight: bold;">let</span> el <span style="color: #339933;">=</span> document.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'.content'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+  <span style="color: #000066; font-weight: bold;">let</span> randomColor <span style="color: #339933;">=</span> <span style="">Math</span>.<span style="color: #660066;">floor</span><span style="color: #009900;">&#40;</span><span style="">Math</span>.<span style="color: #660066;">random</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">*</span> MAX<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #000066; font-weight: bold;">let</span> bgColor <span style="color: #339933;">=</span> <span style="color: #3366CC;">'#'</span> <span style="color: #339933;">+</span> <span style="">Number</span><span style="color: #009900;">&#40;</span>randomColor<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">toString</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">16</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #000066; font-weight: bold;">let</span> fgColor <span style="color: #339933;">=</span> <span style="color: #3366CC;">'#'</span> <span style="color: #339933;">+</span> <span style="">Number</span><span style="color: #009900;">&#40;</span>MAX <span style="color: #339933;">-</span> randomColor<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">toString</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">16</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+  el.<span style="color: #660066;">style</span>.<span style="color: #660066;">backgroundColor</span> <span style="color: #339933;">=</span> bgColor<span style="color: #339933;">;</span>
+  el.<span style="color: #660066;">style</span>.<span style="color: #660066;">color</span> <span style="color: #339933;">=</span> fgColor<span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span> </pre>
+
+<button class="codepen-trigger" data-codepen-id="codepen-manip-styles-example">Посмотреть в песочнице</button>
+
+<template id="codepen-manip-styles-example">
+<div class="container">
+    <button onclick="randomize()"> Set Random Color</button>
+    <div class="content">
+        Hi I'm a simple content!
+    </div>
+</div>
+<style class="codepen-css">
+    .container {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .content {
+        padding: 10px;
+    }
+</style>
+<script class="codepen-js">
+    const MAX = parseInt('fff', 16);
+
+    function randomize() {
+        let el = document.querySelector('.content');
+
+        let randomColor = Math.floor(Math.random() * MAX);
+        let bgColor = '#' + Number(randomColor).toString(16);
+        let fgColor = '#' + Number(MAX - randomColor).toString(16);
+
+        el.style.backgroundColor = bgColor;
+        el.style.color = fgColor;
+    }
+</script>
+</template>
+			<p><i>
+				Здесь мы устанавливаем фон и цвет текста в случайне контрастные цвета.
+			</i></p>
+		</div>
+	</div>
+</section>
+    </article>
+</main>
+
+<!--<footer role="contentinfo">-->
+   <!--<div class="wrap">-->
+       <!---->
+   <!--</div>-->
+<!--</footer>-->
+
+<!-- Scripts -->
+<script src="main.min.js"></script>
+<script>
+    window.ws = new WebSlides({
+        showIndex: true,
+        changeOnClick: false,
+        navigateOnScroll: 60, // def: 40
+        slideOffset: 80 // def: 50
+    });
+</script>
+<form method="post" action="https://codepen.io/pen/define" class="hidden" target="_blank">
+    <input type="hidden" name="data"/>
+    <input type="submit"/>
+</form>
+</body>
+</html>

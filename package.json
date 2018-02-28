@@ -9,6 +9,10 @@
     "node": "8.9.1"
   },
   "dependencies": {
+    "node-static": "^0.7.10"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
@@ -18,15 +22,10 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "include-tag": "^1.1.0",
-    "merge-stream": "^1.0.1",
-    "node-static": "^0.7.10"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.23.6"
+    "merge-stream": "^1.0.1"
   },
   "scripts": {
     "start": "node index.js",
-    "postinstall": "gulp default",
     "run": "npm run build && node index.js",
     "build": "gulp default",
     "develop": "gulp serve"
