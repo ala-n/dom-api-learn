@@ -1,0 +1,46 @@
+<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">const</span> MAX <span style="color: #339933;">=</span> parseInt<span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'fff'</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">16</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #000066; font-weight: bold;">function</span> randomize<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+  <span style="color: #000066; font-weight: bold;">let</span> el <span style="color: #339933;">=</span> document.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'.content'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+  <span style="color: #000066; font-weight: bold;">let</span> randomColor <span style="color: #339933;">=</span> <span style="">Math</span>.<span style="color: #660066;">floor</span><span style="color: #009900;">&#40;</span><span style="">Math</span>.<span style="color: #660066;">random</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">*</span> MAX<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #000066; font-weight: bold;">let</span> bgColor <span style="color: #339933;">=</span> <span style="color: #3366CC;">'#'</span> <span style="color: #339933;">+</span> <span style="">Number</span><span style="color: #009900;">&#40;</span>randomColor<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">toString</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">16</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+  <span style="color: #000066; font-weight: bold;">let</span> fgColor <span style="color: #339933;">=</span> <span style="color: #3366CC;">'#'</span> <span style="color: #339933;">+</span> <span style="">Number</span><span style="color: #009900;">&#40;</span>MAX <span style="color: #339933;">-</span> randomColor<span style="color: #009900;">&#41;</span>.<span style="color: #660066;">toString</span><span style="color: #009900;">&#40;</span><span style="color: #CC0000;">16</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+  el.<span style="color: #660066;">style</span>.<span style="color: #660066;">backgroundColor</span> <span style="color: #339933;">=</span> bgColor<span style="color: #339933;">;</span>
+  el.<span style="color: #660066;">style</span>.<span style="color: #660066;">color</span> <span style="color: #339933;">=</span> fgColor<span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span> </pre>
+
+<button class="codepen-trigger" data-codepen-id="codepen-manip-styles-example">Посмотреть в песочнице</button>
+
+<template id="codepen-manip-styles-example">
+<div class="container">
+    <button onclick="randomize()"> Set Random Color</button>
+    <div class="content">
+        Hi I'm a simple content!
+    </div>
+</div>
+<style class="codepen-css">
+    .container {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .content {
+        padding: 10px;
+    }
+</style>
+<script class="codepen-js">
+    const MAX = parseInt('fff', 16);
+
+    function randomize() {
+        let el = document.querySelector('.content');
+
+        let randomColor = Math.floor(Math.random() * MAX);
+        let bgColor = '#' + Number(randomColor).toString(16);
+        let fgColor = '#' + Number(MAX - randomColor).toString(16);
+
+        el.style.backgroundColor = bgColor;
+        el.style.color = fgColor;
+    }
+</script>
+</template>

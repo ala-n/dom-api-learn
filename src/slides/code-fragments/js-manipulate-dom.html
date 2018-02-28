@@ -1,0 +1,32 @@
+<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> container <span style="color: #339933;">=</span> document.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'div.container'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000066; font-weight: bold;">var</span> stub <span style="color: #339933;">=</span> container.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'.empty-stub'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+stub <span style="color: #339933;">&amp;&amp;</span> container.<span style="color: #660066;">removeChild</span><span style="color: #009900;">&#40;</span>stub<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #000066; font-weight: bold;">var</span> row <span style="color: #339933;">=</span> document.<span style="color: #660066;">createElement</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'div'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+row.<span style="color: #660066;">textContent</span> <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">new</span> <span style="">Date</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">toString</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+container.<span style="color: #660066;">appendChild</span><span style="color: #009900;">&#40;</span>row<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+
+<button class="codepen-trigger" data-codepen-id="codepen-manip-example">Посмотреть в песочнице</button>
+
+<template id="codepen-manip-example">
+<div class="container">
+	<span class="empty-stub">Empty</span>
+</div>
+<button onclick="manip()">Add</button>
+
+<script class="codepen-js">
+    function manip() {
+        var container = document.querySelector('div.container');
+
+        var stub = container.querySelector('.empty-stub');
+        stub && container.removeChild(stub);
+
+        var row = document.createElement('div');
+        row.textContent = (new Date()).toString();
+
+        container.appendChild(row);
+    }
+</script>
+</template>

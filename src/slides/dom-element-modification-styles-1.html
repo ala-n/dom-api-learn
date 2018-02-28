@@ -1,0 +1,19 @@
+<section>
+	<div class="wrap">
+		<h2><strong>Модификация стилей элемента</strong></h2>
+		<div class="text-context">
+			<p class="no-margin">
+				Для получения и установки инлайновых стилей используеться свойство <a href="https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/style" target="_blank">style</a> [HTMLElement].
+				Это свойство является экземпляром прототипа <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration" target="_blank">CSSStyleDeclaration</a>. CSSStyleDeclaration - не псевдо-массив, а несколько более сложная структура, это хранилище ключ-значение с динамическим подсчетом их кол-ва (доступно свойство length).
+				В качестве ключа используется название css опции в CamelCase. Т.е.:
+			</p>
+			<ul>
+				<li>для доступа к свойству <b><i>color</i></b> используется такой же ключ <b><i>color</i></b></li>
+				<li>а для доступа к свойству <b><i>margin-top</i></b> ключ будет <b><i>marginTop</i></b></li>
+			</ul>
+			<p>
+				В качестве значения используется строка соответствующая тем же правилам что и оригинальное значение CSS-свойства.
+			</p>
+		</div>
+	</div>
+</section>

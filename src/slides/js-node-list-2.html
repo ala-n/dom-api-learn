@@ -1,0 +1,11 @@
+<section>
+    <div class="wrap">
+        <h2><strong>Вызов методов Array на псевдо-массивах</strong></h2>
+        <p class="text-context">
+            Выход есть и возможен он благодаря функциям call и apply из Function.prototype. Мы можем вызывать функции прототипа Array в контексте объектов NodeList. Также бывает удобным и преобразовавать NodeList в Array при помощи все того же способа - вызова в контексте.
+        </p>
+        <include src="./code-fragments/js-node-list-right.html"></include>
+        <br/>
+        <pre class="note">Такой "трюк" можно использовать и на других псевдо-массивах, например на <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/arguments">arguments</a>.</pre>
+    </div>
+</section>

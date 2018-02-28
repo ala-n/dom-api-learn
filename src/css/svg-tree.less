@@ -1,0 +1,85 @@
+.svg-tree {
+	display: block;
+	height: auto;
+
+	.tree-line {
+		fill: none;
+		stroke: black;
+	}
+
+	.tree-box {
+		cursor: pointer;
+
+		rect {
+			width: 80px;
+			height: 20px;
+		}
+		text {
+			fill: white;
+			font-size: 11px;
+			font-weight: 500;
+		}
+
+		&.large {
+			rect {
+				width: 100px;
+			}
+			text {
+				font-size: 10px;
+			}
+		}
+
+		&.x-large {
+			rect {
+				width: 110px;
+			}
+			text {
+				font-size: 10px;
+			}
+		}
+
+		&.small {
+			rect {
+				width: 60px;
+			}
+		}
+
+		&.box-green {
+			rect {
+				fill: #389d36;
+			}
+			text {
+				fill: #fff;
+			}
+		}
+
+		&.box-blue {
+			rect {
+				fill: #247a9d;
+			}
+			text {
+				fill: #fff;
+			}
+		}
+
+		&.box-purple {
+			rect {
+				fill: #7d5b9d;
+			}
+			text {
+				fill: #fff;
+			}
+		}
+	}
+
+	a.tree-box:active, a.tree-box:hover {
+		text {
+			text-decoration: underline;
+		}
+	}
+}
+
+
+
+
+

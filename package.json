@@ -1,0 +1,29 @@
+{
+  "name": "JSvsDOMBasics",
+  "description": "Interactive lecture about JS interactions with DOM",
+  "version": "1.0.0",
+  "author": "Alexey Stsefanovich",
+  "license": "MIT",
+  "dependencies": {
+    "node-static": "^0.7.10",
+    "webslides": "^1.4.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-include-tag": "^1.1.2",
+    "gulp-less": "^3.4.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "include-tag": "^1.1.0",
+    "merge-stream": "^1.0.1"
+  },
+  "scripts": {
+    "run": "npm run build && node index.js",
+    "build": "gulp",
+    "develop": "gulp serve"
+  }
+}

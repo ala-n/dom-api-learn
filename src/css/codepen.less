@@ -1,0 +1,28 @@
+.codepen-trigger {
+  font-family: 'San Francisco', arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  text-shadow: 0 8px 16px rgba(0,20,80,.04), 0 4px 16px rgba(0,0,0,.08);
+  background: transparent;
+  border: none;
+
+  transition: all linear 0.25s;
+
+  &:active, &:hover {
+    background: lightgrey;
+  }
+}
+
+pre + .codepen-trigger {
+  float: right;
+  height: 3rem;
+  line-height: 2rem;
+  padding: 6px;
+}
+
+@media print {
+  .codepen-trigger {
+    display: none;
+  }
+}
