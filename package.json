@@ -25,9 +25,10 @@
     "merge-stream": "^1.0.1"
   },
   "scripts": {
-    "start": "npm run build && node index.js",
+    "start": "node index.js",
+    "postinstall": "gulp default"
     "run": "npm run build && node index.js",
-    "build": "gulp",
+    "build": "gulp default",
     "develop": "gulp serve"
   },
   "repository": {
