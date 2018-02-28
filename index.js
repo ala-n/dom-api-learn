@@ -9,5 +9,7 @@ var server = http.createServer(function (request, response) {
     }).resume();
 });
 
-server.listen(8080);
-console.log('Server started on port 8080');
+var PORT = process.env.PORT || 5000
+
+server.listen(PORT);
+console.log('Server started on port ' + PORT);
