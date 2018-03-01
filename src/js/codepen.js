@@ -4,7 +4,7 @@
 	}
 
 	function openCodepen(title, htmlCode, cssCode, jsCode) {
-		var form = document.querySelector('form[action="https://codepen.io/pen/define"]');
+		const form = document.querySelector('form[action="https://codepen.io/pen/define"]');
 		if (form) {
 			form.querySelector('input[name=data]').setAttribute('value', JSON.stringify({
 				title: title,
@@ -17,15 +17,15 @@
 	}
 
 	function openCodepenNS(id) {
-		var template = document.querySelector('template#' + id);
+		const template = document.querySelector('template#' + id);
 
 		if (!template) { return; }
-        var cloneContent = document.importNode(template.content, true);
+        const cloneContent = document.importNode(template.content, true);
 
-		var jsEls = cloneContent.querySelectorAll('script.codepen-js');
-        var cssEls = cloneContent.querySelectorAll('style.codepen-css');
+		const jsEls = cloneContent.querySelectorAll('script.codepen-js');
+        const cssEls = cloneContent.querySelectorAll('style.codepen-css');
 
-        var js = '', css = '', html = '';
+        let js = '', css = '', html = '';
 
         forEachElement(jsEls, function (script) {
 			js += script.innerHTML + '\n';
@@ -35,7 +35,7 @@
             css += style.innerHTML + '\n';
             cloneContent.removeChild(style);
         });
-        var contentWrap = document.createElement('div');
+        let contentWrap = document.createElement('div');
         contentWrap.appendChild(cloneContent.cloneNode(true));
         html += contentWrap.innerHTML;
 
@@ -43,11 +43,11 @@
 	}
 
 	// Bind buttons
-	var buttons = document.querySelectorAll('[data-codepen-id]');
+	let buttons = document.querySelectorAll('[data-codepen-id]');
 	forEachElement(buttons, function (button) {
-		var id = button.getAttribute('data-codepen-id');
+		let id = button.getAttribute('data-codepen-id');
 		if (id) {
-			button.addEventListener('click', function (e) {
+			button.addEventListener('click', (e) => {
 				openCodepenNS(id);
 				e.stopPropagation();
 				e.preventDefault();

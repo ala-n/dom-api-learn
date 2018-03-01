@@ -1,0 +1,30 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "type": "radio",
+      "text": "Какой вариант обхода NodeList верный?",
+      "answers": [
+        "nodeList.forEach((node)=>{...})",
+        "Array.forEach(nodeList, (node)=>{...})",
+        "Array.prototype.call(forEach, (node)=>{...})",
+        "Array.prototype.forEach.apply(nodeList, (node)=>{...})",
+        "Array.prototype.forEach.call(nodeList, (node)=>{...})"
+      ],
+      "right": "Array.prototype.forEach.call(nodeList, (node)=>{...})"
+    },
+    {
+      "id": "q2",
+      "type": "checkbox",
+      "text": "Какой вариант обхода NodeList верный?",
+      "answers": [
+        "nodeList.forEach((node)=>{...})",
+        "Array.forEach(nodeList, (node)=>{...})",
+        "Array.prototype.call(forEach, (node)=>{...})",
+        "Array.prototype.forEach.apply(nodeList, (node)=>{...})",
+        "Array.prototype.forEach.call(nodeList, (node)=>{...})"
+      ],
+      "right": "Array.prototype.forEach.call(nodeList, (node)=>{...})"
+    }
+  ]
+}

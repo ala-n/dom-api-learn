@@ -100,8 +100,63 @@ a.important-link {
     background: #fffcc8;
 }
 
-pre + pre {
-    margin-top: 1rem;
+.test-button {
+    border: 1px solid #44d;
+    background-color: #44d;
+    color: #fff;
+    text-shadow: 0 1px 0 #123;
+    box-shadow: 0 10px 16px -8px rgba(0, 20, 80, 0.3);
+
+    &:hover {
+        transform: scale(1.02);
+    }
+    &:active {
+        background-color: #17d;
+    }
+}
+
+#test-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow: auto;
+
+    .dlg-toolbar {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        button {
+            flex: 1 0 auto;
+            width: 45%;
+
+            &:hover {
+                transform: scale(1.01);
+            }
+        }
+    }
+}
+#test-form {
+    .question-item {
+        legend {
+            text-transform: none;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 1.3rem;
+            height: 1.3rem;
+            margin-right: 0.7rem;
+        }
+
+        &.wrong {
+            background: #ff7f8a;
+        }
+        &.right {
+            background: #a6ff98;
+        }
+    }
 }
 
 /* Print overrides */
@@ -116,5 +171,9 @@ pre + pre {
 
     .wrap > :last-child {
         margin-bottom: 6px;
+    }
+
+    .no-print {
+        display: none !important;
     }
 }

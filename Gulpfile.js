@@ -10,7 +10,7 @@ const gulp = require('gulp'),
     less = require('gulp-less'),
     sourcemap = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify-es').default,
     minifyCSS = require('gulp-minify-css'),
     includeTag = require('gulp-include-tag');
 
@@ -73,7 +73,7 @@ gulp.task('serve', ['less', 'js-debug', 'build-html'], function() {
         server: "./" + OUTPUT_DIR
     });
 
-    gulp.watch("src/js/*.js", ['js']);
+    gulp.watch("src/js/*.js", ['js-debug']);
 	gulp.watch("src/less/*.less", ['less']);
     gulp.watch("src/**/*.html", ['build-html']);
 });
