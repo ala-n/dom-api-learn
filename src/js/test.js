@@ -4,6 +4,7 @@
                 {{#questions}}
                 <fieldset class="box-white question-item" data-question-id="{{id}}">
                     <legend>{{text}}</legend>
+                    {{#code}}<pre class="question-code">{{code}}</pre>{{/code}}
                     {{#answers}}
                     <div class="question-answer">
                         <input id="id-answer-{{index}}" type="{{type}}" name="{{id}}" value="{{value}}"/>
@@ -24,7 +25,8 @@
             .then((res) => res.json())
             .then((data) => {
                 if (data.questions && data.questions.length) {
-                    data.questions.forEach((question) => {
+                    data.questions.forEach((question, number) => {
+	                    question.id = `q-${number+1}`;
                         question.answers = (question.answers || []).map((value, index) => ({value, index}));
                     });
 
@@ -39,9 +41,11 @@
     }
 
     function equals(v1, v2) {
+        if (v1 && v1.length === 1) { v1 = v1[0] }
+	    if (v2 && v2.length === 1) { v2 = v2[0] }
         if (Array.isArray(v1) || Array.isArray(v2)) {
             if (v1.length === v2.length) {
-                return v1.some((key) => v2.indexOf(key) === -1);
+                return !(v1.some((key) => v2.indexOf(key) === -1));
             }
             return false;
         } else {
@@ -55,7 +59,7 @@
             Object.keys(env.form._validateObject).forEach((key)=> {
                 let item = env.form.querySelector('[data-question-id="'+key+'"]');
 
-                if (equals(env.form._validateObject[key], formData.get(key))) {
+                if (equals(env.form._validateObject[key], formData.getAll(key))) {
                     item.classList.remove('wrong');
                     item.classList.add('right');
                 } else {
@@ -79,6 +83,10 @@
         window.endTest();
         if (path) {
             const dialog = document.getElementById('test-dialog');
+
+            // Polyfill
+	        window.dialogPolyfill.registerDialog(dialog);
+
             const form = document.getElementById('test-form');
 
             dialog.showModal();

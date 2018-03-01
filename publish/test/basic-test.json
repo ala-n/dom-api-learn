@@ -1,30 +1,42 @@
 {
   "questions": [
     {
-      "id": "q1",
       "type": "radio",
       "text": "Какой вариант обхода NodeList верный?",
       "answers": [
         "nodeList.forEach((node)=>{...})",
         "Array.forEach(nodeList, (node)=>{...})",
         "Array.prototype.call(forEach, (node)=>{...})",
-        "Array.prototype.forEach.apply(nodeList, (node)=>{...})",
         "Array.prototype.forEach.call(nodeList, (node)=>{...})"
       ],
       "right": "Array.prototype.forEach.call(nodeList, (node)=>{...})"
     },
     {
-      "id": "q2",
-      "type": "checkbox",
-      "text": "Какой вариант обхода NodeList верный?",
+      "type": "radio",
+      "text": "Который из способов установки верхнего отступа верный?",
       "answers": [
-        "nodeList.forEach((node)=>{...})",
-        "Array.forEach(nodeList, (node)=>{...})",
-        "Array.prototype.call(forEach, (node)=>{...})",
-        "Array.prototype.forEach.apply(nodeList, (node)=>{...})",
-        "Array.prototype.forEach.call(nodeList, (node)=>{...})"
+        "element.marginTop = 10;",
+        "element['margin-top'] = 10;",
+        "element['margin-top'] = '10px';",
+        "element.classList.add('margin-top', '10px')",
+        "element.style.marginTop = 10;",
+        "element.style.marginTop = '10px';",
+        "element.style[margin-top] = '10px';"
       ],
-      "right": "Array.prototype.forEach.call(nodeList, (node)=>{...})"
+      "right": "element.style.marginTop = '10px';"
+    },
+    {
+      "type": "checkbox",
+      "text": "Выберите верные варианты получения кнопки: ",
+      "code": "<div id=\"btn\" class=\"container\">\n  <button type=\"submit\"></button>\n</div>",
+      "answers": [
+        "document.querySelector('.container [type='submit']')",
+        "document.getElement('.container [type='submit']')",
+        "document.getElement('#btn')",
+        "document.getElementById('#btn')",
+        "document.getElementById('btn')"
+      ],
+      "right": ["document.querySelector('.container [type='submit']')", "document.getElementById('btn')"]
     }
   ]
 }

@@ -20,7 +20,6 @@
     "gulp-include-tag": "^1.1.2",
     "gulp-less": "^3.4.0",
     "gulp-minify-css": "^1.2.4",
-    "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify-es": "^1.0.1",
     "include-tag": "^1.1.0",
     "merge-stream": "^1.0.1"

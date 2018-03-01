@@ -8,7 +8,6 @@ const gulp = require('gulp'),
 	gzip = require('gulp-gzip'),
     clean = require('gulp-clean'),
     less = require('gulp-less'),
-    sourcemap = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify-es').default,
     minifyCSS = require('gulp-minify-css'),
@@ -60,10 +59,7 @@ gulp.task('build-html', function () {
 // DEBUG TASKS
 gulp.task('js-debug', function () {
     gulp.src('src/js/*')
-        .pipe(sourcemap.init())
         .pipe(concat(SCRIPT_OUTPUT))
-        .pipe(uglify())
-        .pipe(sourcemap.write())
         .pipe(gulp.dest(OUTPUT_DIR))
         .pipe(browserSync.stream());
 });
