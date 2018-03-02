@@ -77,6 +77,7 @@
         if (testState) {
             testState.form.innerHTML = '';
             testState.dialog.close();
+            testState = null;
         }
     };
     window.openTest = function openTest(path) {
