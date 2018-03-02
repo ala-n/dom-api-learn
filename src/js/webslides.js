@@ -1040,6 +1040,7 @@ var WebSlides = function () {
         }
 
         _this2.el.style.overflow = 'auto';
+        _this2.el.scrollTop = 0;
         setTimeout(function () {
           callback.call(_this2, nextSlide);
         }, 150);
