@@ -1,5 +1,13 @@
 /* Print overrides */
+.print-only {
+	display: none;
+}
+
 @media print {
+	.print-only {
+		display: block;
+	}
+
 	.fadeInUp, .zoomIn {
 		animation: none !important;
 	}

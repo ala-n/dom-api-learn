@@ -1409,6 +1409,14 @@ header {
   }
 }
 
+@media print {
+  header nav a.logo {
+    img:not(.print-only) {
+      display: none;
+    }
+  }
+}
+
 /*=========================================
 4. Footer
 =========================================== */
