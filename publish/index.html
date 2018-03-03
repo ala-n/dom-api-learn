@@ -34,24 +34,32 @@
 </head>
 <body>
 <header role="banner">
+    <div class="landing-bg"></div>
     <nav role="navigation">
-        <p class="logo"><a href="index.html" title="Home">JS vs DOM</a></p>
-        <ul class="hide-xs">
-            <li class="header-text"><small>Resources: </small></li>
-            <li><a href="https://developer.mozilla.org" target="_blank">
-                <img src="images/logos/mdn.svg"/>
-            </a></li>
+        <a href="index.html" title="Home" class="logo">
+            <img src="./images/logo.png">
+        </a>
+        <ul>
+            <li>
+                <a href="https://learn.javascript.ru" target="_blank" class="navlink">
+                    <img src="images/logos/learn.javascript.svg"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://developer.mozilla.org" target="_blank" class="navlink">
+                    <img src="images/logos/mdn.svg"/>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 
 <main role="main">
     <article id="webslides" class="vertical">
-        <section>
-    <!--<span class="background" style="background-image:url('https://webslides.tv/static/images/nature.jpg')"></span>-->
-    <span class="background" style="background-image:url('images/bg-main1.jpg')"></span>
+        <section class="landing-slide">
+    <span class="background landing-bg"></span>
     <div class="wrap aligncenter size-70">
-        <h1 class="text-landing">JS: Работа с DOM</h1>
+        <h1 class="text-landing text-contrast-white">JS: Работа с DOM</h1>
 
         <div class="content-right">
             <p class="text-info">Presenter: <i>Alexey Stsefanovich</i></p>
@@ -789,14 +797,15 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
         <section>
 	<div class="wrap">
 		<h2><strong>&lt;template&gt;</strong></h2>
-		<p class="text-context">
-			Затронем еще одну возможность HTML, а именно тэг <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/template" target="_blank">&lt;template&gt;</a>.
-			С помощью тега template осуществляется механизм для отложенного рендера HTML контента, который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript.
-		</p>
-		<p>
-			Рассмотрим его применение на практике:
-		</p>
-		<button class="codepen-trigger" data-codepen-id="codepen-template-example">Открыть в песочнице</button>
+		<div class="text-context">
+			<p>
+				Затронем еще одну возможность HTML, а именно тэг <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/template" target="_blank">&lt;template&gt;</a>.
+				С помощью тега template осуществляется механизм для отложенного рендера HTML контента, который не отображается во время загрузки, но может быть инициализирован при помощи JavaScript.
+			</p>
+			<p>
+				Рассмотрим его применение на практике:
+			</p>
+			<button class="codepen-trigger" data-codepen-id="codepen-template-example">Открыть в песочнице</button>
 
 <template id="codepen-template-example">
 	<div class="container">
@@ -898,6 +907,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 		})(window);
 	</script>
 </template>
+		</div>
 	</div>
 </section>
 
@@ -943,12 +953,6 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
     <form id="test-form">
     </form>
 </dialog>
-
-<!--<footer role="contentinfo">-->
-   <!--<div class="wrap">-->
-       <!---->
-   <!--</div>-->
-<!--</footer>-->
 
 <!-- Scripts -->
 <script src="main.min.js"></script>

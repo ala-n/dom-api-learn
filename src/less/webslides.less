@@ -346,9 +346,10 @@ footer:after,
 webslides.js will add .ws-ready automatically. Don't worry :) -- */
 .ws-ready,
 .ws-ready body {
-  height: 100%;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
-  width: 100%; }
+}
 
 .ws-ready.ws-ready-zoom {
   overflow: visible; }
@@ -361,10 +362,11 @@ webslides.js will add .ws-ready automatically. Don't worry :) -- */
   height: 100vh;
   overflow: auto;
   overflow-x: hidden;
-  overflow-y: scroll;
 }
-  #webslides::-webkit-scrollbar {
-    display: none; }
+
+#webslides::-webkit-scrollbar {
+  display: none;
+}
 
 li li {
   margin-left: 1.6rem; }
@@ -412,20 +414,19 @@ nav a[rel='external'] em,
             transform: rotate(-3deg); }
 
 /*=== 1.1 WRAP/CONTAINER === */
-.wrap,
-header nav,
-footer nav {
+.wrap {
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
   position: relative;
   width: 100%;
-  z-index: 2; }
+  z-index: 2;
+
   @media (min-width: 1024px) {
-    .wrap,
-    header nav,
-    footer nav {
-      width: 90%; } }
+    width: 90%;
+  }
+}
+
 
 .wrap > *:last-child{
   margin-bottom: 96px;
@@ -1290,30 +1291,130 @@ figure[class*='text-pull-'] {
   font-weight: bold;
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2"); }
 
-/*=========================================
-3. Header & Footer
+/* =========================================
+3. Header
 =========================================== */
-/* -- If you want an unique, global header/footer,read this:
-https://github.com/webslides/webslides/issues/57 -- */
-header,
-#navigation {
-  padding: 10px 2.4rem;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-  width: 100%; }
 
-header p {
-  line-height: 4.8rem;
-  margin-bottom: 0;
+.landing-bg {
+  background: url(./images/BGMain.jpg) repeat center;
 }
 
-header[role='banner'] img {
-  height: 3rem;
-  vertical-align: middle;
+header {
+	position: absolute;
+	z-index: 3;
+
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	overflow: hidden;
+
+	padding: 10px 2.4rem;
+
+	transition: all .4s ease-in-out;
+
+	nav {
+		display: flex;
+		position: relative;
+		flex-wrap: nowrap;
+
+		width: 100%;
+		height: 100%;
+
+		a.logo {
+			display: block;
+			flex: 0 0 auto;
+			align-self: flex-start;
+			height: 100%;
+
+			img {
+				width: auto;
+				height: 100%;
+				vertical-align: middle;
+			}
+		}
+
+		ul {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: flex-end;
+			flex: 1 0 auto;
+
+			li {
+				float: left;
+				list-style: none;
+				position: relative;
+
+				flex: 0 0 auto;
+				width: auto;
+				img {
+					margin: auto;
+				}
+			}
+		}
+
+		a.navlink {
+			display: block;
+			height: 100%;
+
+			text-decoration: none;
+
+			img {
+				width: auto;
+				height: 40px;
+			}
+
+			&:hover {
+				background-color: rgba(255, 255, 255, 0.5);
+			}
+		}
+
+	}
+
+	.landing-bg {
+		position: absolute;
+		pointer-events: none;
+		top: 0;
+		left: 0;
+		opacity: 0.5;
+		width: 100%;
+		height: 100vh;
+
+    background-size: cover;
+
+    transition: opacity .4s ease-in-out;
+	}
+	&:hover {
+		.landing-bg {
+			opacity: 1;
+		}
+	}
 }
 
+@media all and (max-width: 800px) {
+  .landing-slide {
+    margin-top: -60px;
+  }
+
+  header {
+    position: relative;
+
+    nav ul {
+      display: none;
+    }
+
+    .landing-bg {
+      opacity: 1;
+    }
+  }
+}
+
+/*=========================================
+4. Footer
+=========================================== */
 footer {
   position: relative;
+  z-index: 3;
   width: 100%;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
@@ -1327,113 +1428,12 @@ footer {
     line-height: 20px;
     margin-bottom: 0;
   }
-}
 
-header,
-footer {
-  z-index: 3;
-}
-
-header,
-.ws-ready footer {
-  left: 0;
-  position: absolute;
-  top: 0; }
-
-.ws-ready footer {
-  bottom: 0;
-  top: auto; }
-
-header[role='banner'] {
-  opacity: 0; }
-  header[role='banner']:hover {
-    opacity: 1; }
-
-@media (max-width: 767px) {
-  footer .alignleft,
-  footer .alignright {
-    display: block;
-    float: none; } }
-
-/*=== 3.1. Logo === */
-.logo {
-  text-transform: lowercase; }
-  .logo a {
-    background: url("../images/logo.png") no-repeat 0 0;
-    background-size: 100% 100%;
-    float: left;
-    height: 3rem;
-    text-indent: -4000px;
-    /*If you remove text-indent and add: */
-    /*padding-left: 6rem;*/
-    vertical-align: middle;
-    width: 16rem; }
-
-/*=========================================
-4. Navigation
-=========================================== */
-/*=== 4.1. Navbars === */
-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  li {
-    float: left;
-    list-style: none;
-    position: relative;
-
-    img {
-      margin: auto;
-    }
-  }
-}
-
-@media all and (max-width: 450px) {
-  nav ul.hide-xs {
-    display: none;
-  }
-}
-
-nav ul li:first-child,
-nav[role='navigation'] ul li {
-  margin-left: 0;
-}
-
-nav[role='navigation'] li a {
-  display: flex;
-  justify-content: center;
-  line-height: 3rem;
-  max-width: 100%;
-  padding: 0 0.6rem;
-  position: relative;
-  text-decoration: none;
-}
-
-header nav ul {
-  justify-content: flex-end;
-  margin: 0;
-}
-
-nav.aligncenter ul,
-.aligncenter nav ul {
-  justify-content: center;
-}
-
-nav.navbar ul li {
-  /*====full float li a ====*/
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto; }
-
-@media (max-width: 568px) {
-  nav.navbar ul {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-flow: column wrap;
-    padding: 0;
-  }
-  nav.navbar li a {
-    justify-content: flex-start;
+  .ws-ready & {
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: 0;
   }
 }
 
@@ -3337,47 +3337,6 @@ h1 span {
   color: rgba(70, 170, 130, 0.9);
   text-shadow: none; }
 
-/*=========================================
-Header/Nav
-=========================================== */
-
-header[role='banner'] {
-  background-color: #9c9c9c;
-  background-image: url(./images/BGMain.jpg);
-  background-size: cover;
-}
-
-.logo a {
-  color: inherit; }
-
-nav[role='navigation'] li.active a {
-  background-color: #555;
-  color: #fff; }
-
-nav[role='navigation'] li a {
-  color: #fff;
-}
-  nav[role='navigation'] li a:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
-
-nav li.twitter a:hover {
-  background-color: #1da1f3; }
-
-nav li.facebook a:hover {
-  background-color: #3b5998; }
-
-nav li.linkedin a:hover {
-  background-color: #1683bb; }
-
-nav li.dribbble a:hover {
-  background-color: #ea4c89; }
-
-nav li.github a:hover {
-  background-color: #60b044; }
-
-nav li.email a:hover {
-  background-color: #dd4b39; }
 
 /*===================================================
 .flexblock li hover/active

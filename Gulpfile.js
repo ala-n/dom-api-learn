@@ -78,21 +78,13 @@ function serveTask() {
 		server: "./" + OUTPUT_DIR
 	});
 
-	gulp.watch("src/js/*.js", debugJS);
-	gulp.watch("src/less/*.less", buildLess);
-	gulp.watch("src/**/*.html", buildHTML);
+	gulp.watch('src/js/*.js', gulp.series('debug-js'));
+	//gulp.watch('src/less/*.less',  gulp.series('build-less'));
+	gulp.watch('src/*.html', gulp.series('build-html'));
+	gulp.watch('src/slides/*.html', gulp.series('build-html'));
 }
 gulp.task('serve', serveTask);
 
 const defaultTask = gulp.series(debugTask, serveTask);
 
 gulp.task('default', defaultTask);
-
-// // TASKS EXPORT
-// exports.serve = serveTask;
-// exports.clean = cleanTask;
-// exports.build = buildTask;
-// exports.buildHTML = buildHTML;
-// exports.buildLess = buildLess;
-// exports.buildJS = buildJS;
-// exports.debugJS = debugJS;

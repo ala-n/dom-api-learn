@@ -2,24 +2,34 @@
     margin-right: 10px;
 }
 
+.text-contrast-white {
+    text-shadow: 0 0 15px #fff;
+}
+
 .no-padding {
     padding: 0;
 }
+.no-margin {
+    margin: 0;
+}
 
 .pageheight {
-    height: 75vh;
+    height: 70vh;
+    &:last-child {
+        margin-bottom: 50px;
+    };
 }
 
 .fullwidth-90 {
     width: 90%;
-    height: 90%;
+    height: 100%;
 
     max-height: 100%;
     max-width: 100%;
 }
 .fullwidth-80 {
     width: 80%;
-    height: 80%;
+    height: 100%;
 
     max-height: 100%;
     max-width: 100%;
@@ -92,85 +102,8 @@ a.important-link {
     float: right;
 }
 
-.no-margin {
-    margin: 0;
-}
-
 .note {
     background: #fffcc8;
 }
 
-.test-button {
-    border: 1px solid #44d;
-    background-color: #44d;
-    color: #fff;
-    text-shadow: 0 1px 0 #123;
-    box-shadow: 0 10px 16px -8px rgba(0, 20, 80, 0.3);
 
-    &:hover {
-        transform: scale(1.02);
-    }
-    &:active {
-        background-color: #17d;
-    }
-}
-
-#test-dialog {
-    .dlg-toolbar {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-        button {
-            flex: 1 0 auto;
-            width: 45%;
-
-            &:hover {
-                transform: scale(1.01);
-            }
-        }
-    }
-}
-#test-form {
-    .question-item {
-        legend {
-            text-transform: none;
-        }
-        pre.question-code {
-            margin-top: -40px;
-            padding: 1rem 2.4rem;
-        }
-        input[type="radio"],
-        input[type="checkbox"] {
-            width: 1.3rem;
-            height: 1.3rem;
-            margin-right: 0.7rem;
-        }
-
-        &.wrong {
-            background: #ff7f8a;
-        }
-        &.right {
-            background: #a6ff98;
-        }
-    }
-}
-
-/* Print overrides */
-@media print {
-    .fadeInUp, .zoomIn {
-        animation: none !important;
-    }
-
-    #webslides-zoomed {
-        display: none;
-    }
-
-    .wrap > :last-child {
-        margin-bottom: 6px;
-    }
-
-    .no-print {
-        display: none !important;
-    }
-}
