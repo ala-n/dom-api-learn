@@ -110,8 +110,13 @@
         <section>
     <div class="wrap">
         <h2><strong>Document Object Model</strong></h2>
-        <p class="text-context">Объектная модель документа (Document Object Model, DOM) - это фундаментальный прикладной программный интерфейс, обеспечивающий возможность работы с содержимым HTML и XML-документов.<br>
-            Прежде всего, следует понимать, что вложенные элементы HTML или XML-документов представлены в виде дерева объектов DOM. Древовидное представление HTML-документа содержит узлы, представляющие элементы или теги, такие как &lt;body&gt; и &lt;p&gt;, и узлы, представляющие строки текста.</p>
+        <p class="text-context">
+            Объектная модель документа (Document Object Model, DOM) - это фундаментальный прикладной программный интерфейс,
+            обеспечивающий возможность работы с содержимым HTML и XML-документов.<br>
+            Прежде всего, следует понимать, что вложенные элементы HTML или XML-документов представлены в виде дерева объектов DOM.
+            Древовидное представление HTML-документа содержит узлы, представляющие элементы или теги, такие как &lt;body&gt; и &lt;p&gt;,
+            и узлы, представляющие строки текста.
+        </p>
     </div>
 </section>
         <section>
@@ -493,7 +498,7 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">&#
 
 			<p class="top-margin-line">
 				<span class="text-dangerous">Но псевдоэлементы не являются частью DOM, поэтому результат обращения к ним будет <i>null</i>.</span>
-				Они являются частью так называемого Rendering Tree, и мы видим их в навигаторе DevTools браузера,
+				Они являются частью так называемого Render Tree, и мы видим их в навигаторе DevTools браузера,
 				но из JS можем лишь воздействовать на них косвенно, меняя набор CSS-классов элемента.
 			</p>
 		</div>
@@ -965,7 +970,8 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 			<li><a href="https://learn.javascript.ru" target="_blank">learn.javascript</a> - огромнейшее кол-во туториалов на русском, крайне полезных тем, кто только начинает знакомство с JS</li>
 			<li> в частности <a href="https://learn.javascript.ru/coding-style" target="_blank">coding-style</a> - короткая статья о лучших практиках, крайне рекомендованная к прочтению</li>
 			<li> и <a href="http://javascript.ru/node/605" target="_blank">Paбота с DOM на learn.javascript</a> - серия туториалов на learn.javascript рассказывающих в деталях про то, о чем говорили на лекции</li>
-			<li><a href="https://www.w3schools.com/JS">W3Schools</a> - еще один качественный и подробный ресурс для получения базовых знаний.</li>
+			<li><a href="https://www.w3schools.com/JS">W3Schools</a> - еще один качественный и подробный ресурс для получения базовых знаний</li>
+			<li><a href="https://habrahabr.ru/post/224187/" target="_blank">Рендеринг WEB-страницы: что об этом должен знать front-end разработчик</a> - "<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank">How Browser Work</a>" в краце и на русском</li>
 		</ul>
 	</div>
 </section>
@@ -982,7 +988,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 		<h2>1. Глобальный scope, модули ES5, IIFE.</h2>
 		<div class="text-context">
 			<p>
-				Внимательный слушатель лекций по JS уже знает, что обявление переменных вне какого либо "контекста"(scope) (это функция для var и блок для let/const)
+				Внимательный слушатель лекций по JS уже знает, что объявление переменных вне какого-либо "контекста" (scope) (функция для var и блок для let/const)
 				равносильно определению переменной в глобальном объекте, каковым в браузерах является window.
 			</p>
 			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> testA <span style="color: #339933;">=</span> <span style="color: #3366CC;">'A'</span><span style="color: #339933;">;</span>
@@ -991,7 +997,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
     console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Hey, we placed in a window!'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <span style="color: #009900;">&#125;</span></pre>
 			<p>
-				Проблема в том что мы захламляем window огромным количеством ненужнх извне переменных, которые рано или поздно начнут конфликтовать между собой.
+				Проблема в том что мы захламляем window огромным количеством ненужных извне переменных, которые рано или поздно начнут конфликтовать между собой.
 			</p>
 		</div>
 	</div>
@@ -1000,7 +1006,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 	<div class="wrap">
 		<div class="text-context">
 			<p>
-				Чтобы подобного не происходило необходимо оборачивать связанные и обобщенные функционально части (дркугими словами одельные модули приложения)
+				Чтобы подобного не происходило необходимо оборачивать связанные и обобщенные функционально части (другими словами отдельные модули приложения)
 				в конструкцию называемую <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE" target="_blank">Immediately Invoked Function Expression (IIFE)</a>.
 			</p>
 			<pre class="code javascript" style="font-family:monospace;"><span style="color: #006600; font-style: italic;">// Just an example! There are many options exists.</span>
@@ -1059,7 +1065,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 				<li>Идеальный код - он понятен без комментариев. Но как правило без них не обойтись.
 					Сложная логика, функции которые можно переиспользовать - это примеры того, что нужно прокомментировать в первую очередь.</li>
 				<li>Хаус в коде очень плохое явление. Группируйте все логически.</li>
-				<li>ООП в JS бывет очень полезен и может заметно повысить читаемость кода.
+				<li>ООП в JS бывает очень полезен и может заметно повысить читаемость кода.
 					Вам даже не надо сразу вдаваться в детали одного из самых страшных вопросов JavaScript
 					(<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank">прототипное наследование</a>).
 					Начните с простого: в ES6 доступен похожий на другие C-подобные языки
