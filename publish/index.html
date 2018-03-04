@@ -470,7 +470,7 @@ nodesArray.<span style="color: #660066;">forEach</span><span style="color: #0099
 		<div class="text-context">
 			<p>
 				Как вы уже знаете в CSS есть возможность обращаться к так называемым
-				<a class="https://developer.mozilla.org/ru/docs/Learn/CSS/Introduction_to_CSS/Pseudo-classes_and_pseudo-elements" target="_blank">псевдоэлементам</a>,
+				<a href="https://developer.mozilla.org/ru/docs/Learn/CSS/Introduction_to_CSS/Pseudo-classes_and_pseudo-elements" target="_blank">псевдоэлементам</a>,
 				таким как <i>::before</i>, <i>::after</i>, <i>::backdrop</i> и т.д., и может появиться желание доступиться к ним из JS, например так:
 			</p>
 
@@ -965,9 +965,122 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 			<li><a href="https://learn.javascript.ru" target="_blank">learn.javascript</a> - огромнейшее кол-во туториалов на русском, крайне полезных тем, кто только начинает знакомство с JS</li>
 			<li> в частности <a href="https://learn.javascript.ru/coding-style" target="_blank">coding-style</a> - короткая статья о лучших практиках, крайне рекомендованная к прочтению</li>
 			<li> и <a href="http://javascript.ru/node/605" target="_blank">Paбота с DOM на learn.javascript</a> - серия туториалов на learn.javascript рассказывающих в деталях про то, о чем говорили на лекции</li>
+			<li><a href="https://www.w3schools.com/JS">W3Schools</a> - еще один качественный и подробный ресурс для получения базовых знаний.</li>
 		</ul>
 	</div>
 </section>
+
+        <section>
+	<div class="wrap">
+		<div class="content-center">
+			<h1>Best Practices.</h1>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2>1. Глобальный scope, модули ES5, IIFE.</h2>
+		<div class="text-context">
+			<p>
+				Внимательный слушатель лекций по JS уже знает, что обявление переменных вне какого либо "контекста"(scope) (это функция для var и блок для let/const)
+				равносильно определению переменной в глобальном объекте, каковым в браузерах является window.
+			</p>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> testA <span style="color: #339933;">=</span> <span style="color: #3366CC;">'A'</span><span style="color: #339933;">;</span>
+<span style="color: #000066; font-weight: bold;">const</span> testB <span style="color: #339933;">=</span> <span style="color: #3366CC;">'B'</span><span style="color: #339933;">;</span>
+<span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span>window.<span style="color: #660066;">testA</span> <span style="color: #339933;">===</span> <span style="color: #3366CC;">'A'</span> <span style="color: #339933;">&amp;&amp;</span> window.<span style="color: #660066;">testB</span> <span style="color: #339933;">===</span> <span style="color: #3366CC;">'B'</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'Hey, we placed in a window!'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span></pre>
+			<p>
+				Проблема в том что мы захламляем window огромным количеством ненужнх извне переменных, которые рано или поздно начнут конфликтовать между собой.
+			</p>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<div class="text-context">
+			<p>
+				Чтобы подобного не происходило необходимо оборачивать связанные и обобщенные функционально части (дркугими словами одельные модули приложения)
+				в конструкцию называемую <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE" target="_blank">Immediately Invoked Function Expression (IIFE)</a>.
+			</p>
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #006600; font-style: italic;">// Just an example! There are many options exists.</span>
+<span style="color: #000066; font-weight: bold;">var</span> Service <span style="color: #339933;">=</span> <span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+   <span style="color: #000066; font-weight: bold;">var</span> a <span style="color: #339933;">=</span> <span style="color: #3366CC;">'I<span style="color: #000099; font-weight: bold;">\'</span>m a private variable'</span><span style="color: #339933;">;</span>
+&nbsp;
+  <span style="color: #006600; font-style: italic;">// Public API</span>
+  <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">&#123;</span>
+    getA<span style="color: #339933;">:</span> <span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">=&gt;</span>a
+  <span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
+			<pre class="note">Позже вы познакомитесь с ES6 модулями, которые также разрешают проблему глобального "контекста".</pre>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2>2. Strict Mode</h2>
+		<div class="text-context">
+			<p>
+				На этапе становления стандарта ES5, возникла необходимость введения специальной подверсии языка - режима
+				<strong><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">Strict Mode.</a></strong>
+			</p>
+			<p>
+				Strict Mode запрещает опасные, ведущие к потери производительности и конфликтам с новыми стандартами EcmaScript конструкции.
+				Детали всех изменений strict-режима доступны по ссылке выше.
+			</p>
+			<strong class="text-subtitle">Используйте "строгий режим" JavaScript !!!</strong>
+			<p>
+				Строгий режим применяется ко всему скрипту или к отдельным функциям. Чтобы активизировать строгий режим, нужно поместить оператор "use strict";
+				или 'use strict'; перед всеми остальными операторами в функции / скрипте.
+			</p>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<h2>3. Clean Code</h2>
+		<div class="text-context">
+			<p>По статистике 80% времени программист читает код. Треть этого времени, как правило, он не лестно вспоминает тех,
+				кто написал этот код, так что ему его приходится читать 80% времени :).</p>
+			<p>Поэтому пишите чисто. Код должен быть красивым и логичным.<p>
+			<p class="text-subtitle"><strong>Ссылки обязательные к ознакомлению:</strong></p>
+			<ul class="text-subtitle">
+				<li><a href="https://learn.javascript.ru/coding-style" target="_blank">learn.javascript: Советы по стилю кода</a></li>
+				<li><a href="https://www.w3schools.com/JS/js_best_practices.asp">W3Schools: JavaScript Best Practices</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+        <section>
+	<div class="wrap">
+		<div class="text-context">
+			<ul>
+				<li>Названия переменных, классов, всего что вы называете - должны быть понятными и отражать суть.</li>
+				<li>Идеальный код - он понятен без комментариев. Но как правило без них не обойтись.
+					Сложная логика, функции которые можно переиспользовать - это примеры того, что нужно прокомментировать в первую очередь.</li>
+				<li>Хаус в коде очень плохое явление. Группируйте все логически.</li>
+				<li>ООП в JS бывет очень полезен и может заметно повысить читаемость кода.
+					Вам даже не надо сразу вдаваться в детали одного из самых страшных вопросов JavaScript
+					(<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" target="_blank">прототипное наследование</a>).
+					Начните с простого: в ES6 доступен похожий на другие C-подобные языки
+					<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes" target="_blank">синтаксис.</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
+		<h2>4. Еще немного о HTML/CSS</h2>
+		<div class="text-context">
+			<p>
+				<a href="https://habrahabr.ru/post/275729/" target="_blank" class="text-subtitle">Руководство по HTML/CSS/JavaScript</a> -
+				статья о том что такое хорошо и что такое плохо. (крайне рекомендована к прочтению)
+			</p>
+		</div>
+	</div>
+</section>
+
         <section>
 	<div class="wrap">
 		<h2><a class="text-symbols" href="#" target="_blank">Ссылка на задание №5</a></h2>
