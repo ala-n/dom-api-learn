@@ -75,13 +75,13 @@ gulp.task('build-debug', debugTask);
 
 function serveTask() {
 	browserSync.init({
-		server: "./" + OUTPUT_DIR
+		server: './' + OUTPUT_DIR,
+		files: ['./' + OUTPUT_DIR]
 	});
 
 	gulp.watch('src/js/*.js', gulp.series('debug-js'));
 	//gulp.watch('src/less/*.less',  gulp.series('build-less'));
-	gulp.watch('src/*.html', gulp.series('build-html'));
-	gulp.watch('src/slides/*.html', gulp.series('build-html'));
+	gulp.watch('src/**/*.html', gulp.series('build-html'));
 }
 gulp.task('serve', serveTask);
 

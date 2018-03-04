@@ -1,0 +1,16 @@
+<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> pseudo <span style="color: #339933;">=</span> element.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'::before'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>pseudo<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// null</span></pre>
+
+<button class="codepen-trigger" data-codepen-id="codepen-pseudo-example">Посмотреть в песочнице</button>
+<template id="codepen-pseudo-example">
+	<div id="test"></div>
+	<style class="codepen-css">
+		#test::before {
+			content: 'Hello world';
+		}
+	</style>
+	<script class="codepen-js">
+		var divPseudo = document.querySelector('#test::before');
+		alert( 'divPseudo = ' + divPseudo );
+	</script>
+</template>

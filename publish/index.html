@@ -436,7 +436,7 @@
 		<p class="text-context">
 			Как уже было замечено, в тех случаях, когда результатом может являтся более одного элемента, возвращается коллекция элеменнтов <a href="https://developer.mozilla.org/ru/docs/Web/API/NodeList">NodeList</a>.
 			NodeList это псевдо-массив и не содержит в цепочке прототипов прототип Array.prototype, поэтому
-			<span style="color: red; font-weight: bold">не получится напрямую вызывать методы массивов на объектах NodeList</span>.
+			<span class="text-dangerous">не получится напрямую вызывать методы массивов на объектах NodeList</span>.
 		</p>
 		<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> nodes<span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementsByTagName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;div&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 &nbsp;
@@ -466,11 +466,47 @@ nodesArray.<span style="color: #660066;">forEach</span><span style="color: #0099
 
         <section>
 	<div class="wrap">
+		<h2><strong>Псевдоэлементы</strong></h2>
+		<div class="text-context">
+			<p>
+				Как вы уже знаете в CSS есть возможность обращаться к так называемым
+				<a class="https://developer.mozilla.org/ru/docs/Learn/CSS/Introduction_to_CSS/Pseudo-classes_and_pseudo-elements" target="_blank">псевдоэлементам</a>,
+				таким как <i>::before</i>, <i>::after</i>, <i>::backdrop</i> и т.д., и может появиться желание доступиться к ним из JS, например так:
+			</p>
+
+			<pre class="code javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> pseudo <span style="color: #339933;">=</span> element.<span style="color: #660066;">querySelector</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'::before'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>pseudo<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// null</span></pre>
+
+<button class="codepen-trigger" data-codepen-id="codepen-pseudo-example">Посмотреть в песочнице</button>
+<template id="codepen-pseudo-example">
+	<div id="test"></div>
+	<style class="codepen-css">
+		#test::before {
+			content: 'Hello world';
+		}
+	</style>
+	<script class="codepen-js">
+		var divPseudo = document.querySelector('#test::before');
+		alert( 'divPseudo = ' + divPseudo );
+	</script>
+</template>
+
+			<p class="top-margin-line">
+				<span class="text-dangerous">Но псевдоэлементы не являются частью DOM, поэтому результат обращения к ним будет <i>null</i>.</span>
+				Они являются частью так называемого Rendering Tree, и мы видим их в навигаторе DevTools браузера,
+				но из JS можем лишь воздействовать на них косвенно, меняя набор CSS-классов элемента.
+			</p>
+		</div>
+	</div>
+</section>
+
+        <section>
+	<div class="wrap">
 		<h2><strong>Работа с DOM</strong></h2>
 		<ol class="primary-list text-context">
 			<li><a href="#slide=9">API узлов</a></li>
 			<li><a href="#slide=11">Получение элементов на странице</a></li>
-			<li class="active-li"><a href="#slide=20">Доступ к окружению элемнтов страницы</a></li>
+			<li class="active-li"><a href="#slide=21">Доступ к окружению элемнтов страницы</a></li>
 			<li class="disabled-li"><a>Модификация элементов</a></li>
 		</ol>
 	</div>
@@ -482,7 +518,7 @@ nodesArray.<span style="color: #660066;">forEach</span><span style="color: #0099
 			Помимо описанных ранее методов для получения произвольного элемента в дереве сам интерфейс (прототип)
 			<a href="https://developer.mozilla.org/ru/docs/Web/API/Node" target="_blank">Node</a> содержит динамические ссылки на все "окружение" узла дерева:
 			родительский элемент (parentNode), коллекцию дочерних элементов (childNodes), ссылки на первый/последний дочерний элемент (firstChild/lastChild), ссылки на соседей в родительском элементе (previousSibling / nextSibling).
-			Визуально можно просмотреть доступные связи узла на следующей <a href="#slide=21">схеме</a>.
+			Визуально можно просмотреть доступные связи узла на следующей <a href="#slide=22">схеме</a>.
 		</p>
 	</div>
 </section>
@@ -559,8 +595,8 @@ nodesArray.<span style="color: #660066;">forEach</span><span style="color: #0099
 		<ol class="primary-list text-context">
 			<li><a href="#slide=9">API узлов</a></li>
 			<li><a href="#slide=11">Получение элементов на странице</a></li>
-			<li><a href="#slide=20">Доступ к окружению элемнтов страницы</a></li>
-			<li class="active-li"><a href="#slide=23">Модификация элементов</a></li>
+			<li><a href="#slide=21">Доступ к окружению элемнтов страницы</a></li>
+			<li class="active-li"><a href="#slide=24">Модификация элементов</a></li>
 		</ol>
 	</div>
 </section>
@@ -926,7 +962,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 		<h2>Что почитать? </h2>
 		<ul>
 			<li><a href="https://developer.mozilla.org" target="_blank">MDN</a> - документация, ссылки на спеки W3C, некоторые базовые туториалы</li>
-			<li><a href="https://learn.javascript.ru" target="_blank">learn.javascript</a> - огромнейшее кл-во туториалов на русском, крайне полезных тем, кто только начинает знакомство с JS</li>
+			<li><a href="https://learn.javascript.ru" target="_blank">learn.javascript</a> - огромнейшее кол-во туториалов на русском, крайне полезных тем, кто только начинает знакомство с JS</li>
 			<li> в частности <a href="https://learn.javascript.ru/coding-style" target="_blank">coding-style</a> - короткая статья о лучших практиках, крайне рекомендованная к прочтению</li>
 			<li> и <a href="http://javascript.ru/node/605" target="_blank">Paбота с DOM на learn.javascript</a> - серия туториалов на learn.javascript рассказывающих в деталях про то, о чем говорили на лекции</li>
 		</ul>
