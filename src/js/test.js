@@ -7,8 +7,7 @@
                     {{#code}}<pre class="question-code">{{code}}</pre>{{/code}}
                     {{#answers}}
                     <div class="question-answer">
-                        <input id="id-answer-{{index}}" type="{{type}}" name="{{id}}" value="{{value}}"/>
-                        <label for="id-answer-{{index}}">{{value}}</label>
+                        <label><input type="{{type}}" name="{{id}}" value="{{value}}"/> {{value}}</label>
                     </div>
                     {{/answers}}
                 </fieldset>
