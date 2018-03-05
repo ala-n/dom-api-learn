@@ -338,6 +338,8 @@
 <span style="color: #000066; font-weight: bold;">var</span> input <span style="color: #339933;">=</span> document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">&quot;myElementId&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 </pre>
 
+            <br/>
+            <pre class="note">Получение элемента по идентификатору - наиболее быстрый из способов получения элемента.</pre>
         </div>
     </div>
 </section>
@@ -679,7 +681,7 @@ container.<span style="color: #660066;">appendChild</span><span style="color: #0
 
         <section>
     <div class="wrap">
-        <h4 class="text-symbols">Главное правило DOM манипуляций: <i style="color: blue; text-transform: uppercase;">cократить количество изменений live DOM на столько, на сколько возможно.</i></h4>
+        <h4 class="text-symbols">Главное правило DOM манипуляций: <i style="color: blue; text-transform: uppercase;">сократить количество изменений live DOM настолько, насколько возможно.</i></h4>
         <div class="text-content aligncenter">
             <p>Чем меньше мы меняем live DOM (отслеживаемое дерево), тем меньше мы заставляем браузер пересчитывать позиции компонентов, обновлять CSSOM (объектная модель CSS), перерерисовывать все, что было затронуто...</p>
             <p>Чем больше мы следуем этому правилу, тем луше производительность наших веб-страниц.</p>
